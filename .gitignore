@@ -24,3 +24,7 @@ next-env.d.ts
 .vercel-secrets.env
 .secrets-generated
 .vercel
+
+.vercel
+.env*
+.playwriter*

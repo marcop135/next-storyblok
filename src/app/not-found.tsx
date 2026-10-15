@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="wrap not-found">
+    <main id="main" className="wrap not-found">
       <h1>Page not found</h1>
       <p>
         No story for this path
@@ -13,6 +13,6 @@ export default function NotFound() {
       <p>
         <Link href="/">Back home</Link>
       </p>
-    </div>
+    </main>
   );
 }

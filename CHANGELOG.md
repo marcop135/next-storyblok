@@ -11,6 +11,10 @@
 
 - Add offline regression tests for server-rendered CMS blocks, draft preview, delivery, and publish webhooks.
 
+### Changed
+
+- Update the Storyblok React SDK to 7.3.1 with the existing block and preview APIs.
+
 ### Fixed
 
 - Register CMS blocks on the server and isolate public rendering from the Visual Editor's shared draft cache.

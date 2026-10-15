@@ -41,7 +41,7 @@ Schema: [docs/storyblok-schema.md](docs/storyblok-schema.md). Commands: [docs/co
 ## Stack
 
 - Next.js 15 App Router (RSC) + React 19
-- `@storyblok/react` v5
+- `@storyblok/react` v7
 - Vercel production hosting
 - Hand-written CSS + `next/font`
 

@@ -59,7 +59,7 @@ export default async function StoryPage({ params }: PageProps) {
           <span className="source-badge">locale: {locale}</span>
         ) : null}
       </div>
-      <StoryRenderer story={result.story} source={result.source} />
+      <StoryRenderer story={result.story} source={result.source} preview={preview} />
     </>
   );
 }

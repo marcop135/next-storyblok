@@ -18,7 +18,7 @@ permissions:
 
 jobs:
   build:
-    name: Lint and build
+    name: Test, lint and build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -35,6 +35,9 @@ jobs:
 
       - name: Lint
         run: npm run lint
+
+      - name: Test CMS workflows
+        run: npm test
 
       - name: Lint changelog
         run: npm run changelog:lint

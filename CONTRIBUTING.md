@@ -13,6 +13,7 @@ Use a Storyblok Preview token and match `STORYBLOK_REGION` to the space. Without
 
 ```bash
 npm run lint
+npm test
 npm run changelog:lint
 npm run build
 ```

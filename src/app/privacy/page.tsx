@@ -33,7 +33,7 @@ export default function PrivacyPage() {
 
       <h2>Controller</h2>
       <p>
-        {AUTHOR.name}
+        <a href="https://marcopontili.com">{AUTHOR.name}</a>
         <br />
         Contact: <a href="https://marcopontili.com/contact">marcopontili.com/contact</a>
       </p>
@@ -41,8 +41,8 @@ export default function PrivacyPage() {
       <h2>What is processed</h2>
       <h3>Analytics: self-hosted Matomo</h3>
       <p>
-        This site uses a self-hosted, cookieless installation of Matomo at
-        mt.marcopontili.com. No cookies are set and nothing is stored on your
+        This site uses a self-hosted, cookieless installation of Matomo, run
+        by the controller. No cookies are set and nothing is stored on your
         device. IP addresses are anonymised. The browser&apos;s Do Not Track
         signal is honoured: when it is on, no page view is recorded.
       </p>

@@ -8,6 +8,17 @@ export type ParsedStoryPath = {
   pathname: string;
 };
 
+/** Accept CMS slugs, not URLs, query strings, or traversal segments. */
+export function normalizeStorySlug(value: unknown): string | null {
+  if (typeof value !== "string" || value.startsWith("//")) return null;
+  if (/[\\?#%:\s\u0000-\u001f\u007f]/u.test(value)) return null;
+  const slug = value.replace(/^\/|\/$/g, "") || "home";
+  if (slug.split("/").some((part) => !part || part === "." || part === "..")) {
+    return null;
+  }
+  return slug;
+}
+
 /**
  * Parse optional catch-all segments.
  * `/` → home · `/pricing` → pricing · `/de` → home (de) · `/de/pricing` → pricing (de)

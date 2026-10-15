@@ -1,6 +1,6 @@
 {
   "name": "next-storyblok",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": false,
   "description": "Next.js App Router + Storyblok marketing-site ownership demo (Northline)",
   "scripts": {
@@ -8,23 +8,25 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test": "vitest run",
     "changelog:lint": "node scripts/changelog-lint.mjs",
     "brand:render": "node .github/brand/render.mjs"
   },
   "dependencies": {
-    "@storyblok/react": "^5.4.3",
+    "@storyblok/react": "^7.3.1",
     "next": "^15.5.4",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
-    "@types/node": "^22.18.1",
+    "@types/node": "^26.6.5",
     "@types/react": "^19.1.12",
     "@types/react-dom": "^19.1.9",
     "eslint": "^9.36.0",
     "eslint-config-next": "^15.5.4",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "vitest": "^5.0.4"
   },
   "engines": {
     "node": ">=22"

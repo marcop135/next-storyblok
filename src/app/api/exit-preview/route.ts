@@ -7,5 +7,13 @@ export async function GET(request: NextRequest) {
   draft.disable();
 
   const next = request.nextUrl.searchParams.get("next") || "/";
-  redirect(next.startsWith("/") ? next : "/");
+  let target: URL;
+  try {
+    target = new URL(next, request.nextUrl.origin);
+  } catch {
+    redirect("/");
+  }
+  const local = next.startsWith("/") && !/[\\\u0000-\u001f\u007f]/u.test(next)
+    && target.origin === request.nextUrl.origin;
+  redirect(local ? `${target.pathname}${target.search}${target.hash}` : "/");
 }

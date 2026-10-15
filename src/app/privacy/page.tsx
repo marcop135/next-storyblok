@@ -95,8 +95,7 @@ export default function PrivacyPage() {
       <h2>Your rights</h2>
       <p>
         You may have the right of access, rectification, erasure, restriction,
-        objection, and portability, and the right to lodge a complaint with a
-        supervisory authority. Use the contact page above.
+        objection, and portability. Use the contact page above. You may lodge a complaint with the data protection authority where you live or work. The same rights and the same contact route apply wherever you are in the world.
       </p>
     </main>
   );

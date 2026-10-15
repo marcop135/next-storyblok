@@ -35,7 +35,7 @@ export default function PrivacyPage() {
       <p>
         {AUTHOR.name}
         <br />
-        Email: <a href={`mailto:${AUTHOR.email}`}>{AUTHOR.email}</a>
+        Contact: <a href="https://marcopontili.com/contact">marcopontili.com/contact</a>
       </p>
 
       <h2>What is processed</h2>
@@ -96,7 +96,7 @@ export default function PrivacyPage() {
       <p>
         You may have the right of access, rectification, erasure, restriction,
         objection, and portability, and the right to lodge a complaint with a
-        supervisory authority. Email the controller address above.
+        supervisory authority. Use the contact page above.
       </p>
     </main>
   );

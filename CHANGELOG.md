@@ -7,6 +7,17 @@
 
 ## [Unreleased]
 
+### Added
+
+- Add offline regression tests for server-rendered CMS blocks, draft preview, delivery, and publish webhooks.
+
+### Fixed
+
+- Register CMS blocks on the server and isolate public rendering from the Visual Editor's shared draft cache.
+- Enforce published content in production and verify draft stories before enabling authenticated preview.
+- Invalidate localized content on publish, unpublish, delete, and move events; reject malformed webhooks.
+- Keep preview exit redirects on-site and distinguish CMS failures from missing stories.
+
 ## [0.1.0] - 2026-10-13
 
 ### Added

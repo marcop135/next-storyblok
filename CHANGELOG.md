@@ -7,6 +7,26 @@
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-10-15
+
+### Added
+
+- Add offline regression tests for server-rendered CMS blocks, draft preview, delivery, and publish webhooks.
+
+### Changed
+
+- Update the Storyblok React SDK to 7.3.1.
+
+### Fixed
+
+- Restore server rendering for CMS-owned pages.
+- Isolate published content from the Visual Editor's shared draft cache.
+- Verify draft stories before enabling authenticated preview.
+- Refresh localized caches across the story lifecycle.
+- Reject malformed webhooks without cache changes.
+- Keep preview exit redirects on-site.
+- Surface CMS outages as errors instead of missing pages.
+
 ## [0.1.0] - 2026-10-13
 
 ### Added

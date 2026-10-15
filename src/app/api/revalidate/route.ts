@@ -1,25 +1,14 @@
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import type { NextRequest } from "next/server";
 
-import { publicPathForSlug } from "@/lib/story-path";
-import { defaultLocale, locales } from "@/lib/i18n";
+import { normalizeStorySlug, publicPathForSlug } from "@/lib/story-path";
+import { locales } from "@/lib/i18n";
+import { storyblokCacheTag, storyCacheTag } from "@/lib/story-cache";
 
-type StoryblokWebhookBody = {
-  full_slug?: string;
-  slug?: string;
-  action?: string;
-};
+const contentActions = new Set(["published", "unpublished", "deleted", "moved"]);
 
-function pathsForStory(fullSlug: string): string[] {
-  const slug = fullSlug.replace(/^\/+|\/+$/g, "") || "home";
-  const paths = new Set<string>();
-  for (const locale of locales) {
-    paths.add(publicPathForSlug(slug, locale));
-  }
-  if (slug === "home") {
-    paths.add("/");
-  }
-  return [...paths];
+function invalidPayload() {
+  return Response.json({ ok: false, error: "Invalid webhook payload" }, { status: 400 });
 }
 
 export async function POST(request: NextRequest) {
@@ -32,24 +21,49 @@ export async function POST(request: NextRequest) {
     return Response.json({ ok: false, error: "Unauthorized" }, { status: 401 });
   }
 
-  let body: StoryblokWebhookBody = {};
+  let body: Record<string, unknown>;
   try {
-    body = (await request.json()) as StoryblokWebhookBody;
+    const value: unknown = await request.json();
+    if (!value || typeof value !== "object" || Array.isArray(value)) return invalidPayload();
+    body = value as Record<string, unknown>;
   } catch {
-    body = {};
+    return invalidPayload();
   }
 
-  const fullSlug = body.full_slug || body.slug || "home";
-  const paths = pathsForStory(fullSlug);
-
-  for (const path of paths) {
-    revalidatePath(path);
+  if (body.action !== undefined) {
+    if (typeof body.action !== "string") return invalidPayload();
+    if (!contentActions.has(body.action)) {
+      return Response.json({ ok: true, ignored: true });
+    }
   }
 
-  // Always refresh default home when a story changes and slug is ambiguous
-  if (!body.full_slug && !body.slug) {
-    revalidatePath(publicPathForSlug("home", defaultLocale));
+  const slugs = new Set<string>();
+  const currentSlug = body.full_slug === undefined ? body.slug : body.full_slug;
+  if (currentSlug === undefined && body.old_full_slug !== undefined) return invalidPayload();
+  for (const value of [currentSlug, body.old_full_slug]) {
+    if (value === undefined) continue;
+    const slug = normalizeStorySlug(value);
+    if (!slug) return invalidPayload();
+    slugs.add(slug);
   }
 
-  return Response.json({ ok: true, revalidated: paths });
+  const hasStoryId = typeof body.story_id === "number"
+    && Number.isSafeInteger(body.story_id) && body.story_id > 0;
+  if (!slugs.size && !hasStoryId) return invalidPayload();
+
+  // Legacy ID-only events and moves without an old path must also expire old URLs.
+  if (!slugs.size || (body.action === "moved" && body.old_full_slug === undefined)) {
+    revalidateTag(storyblokCacheTag);
+    revalidatePath("/", "layout");
+    return Response.json({ ok: true, revalidated: ["/"], scope: "all-stories" });
+  }
+
+  const paths = new Set<string>();
+  for (const slug of slugs) {
+    revalidateTag(storyCacheTag(slug));
+    for (const locale of locales) paths.add(publicPathForSlug(slug, locale));
+  }
+  for (const path of paths) revalidatePath(path);
+
+  return Response.json({ ok: true, revalidated: [...paths], scope: "stories" });
 }

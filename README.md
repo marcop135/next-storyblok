@@ -7,7 +7,7 @@
 
 Next.js App Router marketing site driven by **Storyblok** blocks. Portfolio proof that editors own copy and structure in a headless CMS while developers own components, draft preview, and cache invalidation.
 
-**Live:** [next-storyblok.marcopontili.com](https://next-storyblok.marcopontili.com)
+**Live:** [nextstory.marcopontili.com](https://nextstory.marcopontili.com)
 
 [![CI](https://github.com/marcop135/next-storyblok/actions/workflows/ci.yml/badge.svg)](https://github.com/marcop135/next-storyblok/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -43,6 +43,7 @@ Schema: [docs/storyblok-schema.md](docs/storyblok-schema.md). Commands: [docs/co
 - Next.js 15 App Router (RSC) + React 19
 - `@storyblok/react` v7
 - Vercel production hosting
+- Cookieless self-hosted Matomo; AI-assistant fetches reported from middleware ([privacy](https://nextstory.marcopontili.com/privacy))
 - Hand-written CSS + `next/font`
 
 ## License

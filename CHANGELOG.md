@@ -7,6 +7,18 @@
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-10-16
+
+### Added
+
+- Add cookieless self-hosted Matomo, a [privacy page](https://nextstory.marcopontili.com/privacy), and security headers with CSP.
+- Report AI-assistant page fetches to Matomo from middleware.
+- Add sitemap, robots.txt, llms.txt, security.txt, web manifest, icon, and JSON-LD.
+
+### Changed
+
+- Move the canonical host to [nextstory.marcopontili.com](https://nextstory.marcopontili.com).
+
 ## [0.2.0] - 2026-10-15
 
 ### Added

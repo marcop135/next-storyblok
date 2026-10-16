@@ -12,12 +12,12 @@
 
 | Candidate | Pros | Cons |
 | --- | --- | --- |
-| `next-storyblok.marcopontili.com` | Matches original intent; Next + Storyblok obvious on a CV | Longer; not a “product” slug |
+| `nextstory.marcopontili.com` | Matches original intent; Next + Storyblok obvious on a CV | Longer; not a “product” slug |
 | `storyblok.marcopontili.com` | Short, CMS-first | Looks slightly “official”; no Next in the host |
 | `headless.marcopontili.com` | Role signal | Vague; no vendor names |
 | `northline.marcopontili.com` | Matches in-app brand | **Rejected for now:** hides stack on the URL |
 
-Default in the rest of this plan until you pick: **`next-storyblok.marcopontili.com`**. Swap the string everywhere once chosen.
+Default in the rest of this plan until you pick: **`nextstory.marcopontili.com`**. Swap the string everywhere once chosen.
 
 **Better path locked (not md2pdf FTP):** md2pdf deploys a static `dist/` to Netsons cPanel via SFTP/FTPS. This app uses `draftMode`, `/api/preview`, `/api/revalidate`, and server CDN fetches. Static export would drop the portfolio differentiator. Phrase-class stack was Next.js / Storyblok / **Vercel**. Deploy on **Vercel**; put **DNS** on Cloudflare (`<host>.marcopontili.com` CNAME → Vercel). Reuse md2pdf/bullframe patterns for **CI, changelog lint, brand kit, About/topics**, not for FTP upload.
 
@@ -78,7 +78,7 @@ Default in the rest of this plan until you pick: **`next-storyblok.marcopontili.
   - `STORYBLOK_VERSION=published` (production)
   - `STORYBLOK_PREVIEW_SECRET`
   - `STORYBLOK_REVALIDATE_SECRET`
-- Custom domain = chosen host (default `next-storyblok.marcopontili.com`).
+- Custom domain = chosen host (default `nextstory.marcopontili.com`).
 - Playwriter: Cloudflare DNS CNAME for that label → Vercel target; proxy as sibling hosts.
 - cPanel/Netsons: **no** FTP docroot for this app. DNS-only.
 - Storyblok webhook → `https://<host>/api/revalidate?secret=…`

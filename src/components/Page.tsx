@@ -41,7 +41,7 @@ type PageProps = {
 
 export default function Page({ blok, mock = false }: PageProps) {
   return (
-    <main {...storyblokEditable(blok)}>
+    <main id="main" {...storyblokEditable(blok)}>
       {blok.body?.map((nested) =>
         mock ? (
           renderMockBlok(nested)

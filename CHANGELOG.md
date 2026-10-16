@@ -7,6 +7,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- Report page views and AI-assistant fetches to this site's own Matomo property.
+
 ## [0.3.0] - 2026-10-16
 
 ### Added

@@ -58,7 +58,7 @@ describe("matomoTrackingUrl", () => {
     );
     expect(url.origin + url.pathname).toBe("https://mt.marcopontili.com/m/matomo.php");
     expect(Object.fromEntries(url.searchParams)).toEqual({
-      idsite: "1",
+      idsite: "5",
       rec: "1",
       recMode: "1",
       url: "https://nextstory.marcopontili.com/pricing?a=1",
@@ -88,7 +88,7 @@ describe("middleware", () => {
     expect(result).toBeUndefined();
     expect(waitUntil).toHaveBeenCalledOnce();
     expect(fetchMock).toHaveBeenCalledWith(
-      expect.stringContaining("https://mt.marcopontili.com/m/matomo.php?idsite=1"),
+      expect.stringContaining("https://mt.marcopontili.com/m/matomo.php?idsite=5"),
       { method: "GET" },
     );
   });

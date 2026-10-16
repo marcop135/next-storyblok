@@ -7,6 +7,7 @@ import StoryRenderer from "@/components/StoryRenderer";
 import type { PageBlok } from "@/components/types";
 import { fetchStory } from "@/lib/fetch-story";
 import { hreflangAlternates, storyblokLanguage } from "@/lib/i18n";
+import { OG_IMAGE, SITE_NAME } from "@/lib/site";
 import { parseStorySegments } from "@/lib/story-path";
 
 type PageProps = {
@@ -28,12 +29,23 @@ export async function generateMetadata({
     content.seo_title || result.story.name || "Northline";
   const description = content.seo_description || undefined;
 
+  const canonical = pathname ? `/${pathname}` : "/";
+
   return {
     title: { absolute: title },
     description,
     alternates: {
-      canonical: pathname ? `/${pathname}` : "/",
+      canonical,
       languages: hreflangAlternates(slug),
+    },
+    openGraph: {
+      type: "website",
+      siteName: SITE_NAME,
+      locale: locale === "de" ? "de_DE" : "en_US",
+      title,
+      description,
+      url: canonical,
+      images: [OG_IMAGE],
     },
   };
 }

@@ -1,0 +1,20 @@
+# next-storyblok
+
+> Next.js App Router marketing site driven by Storyblok blocks. Portfolio proof that editors own copy and structure in a headless CMS while developers own components, draft preview, and cache invalidation. In-app demo brand: Northline.
+
+- Site: https://nextstory.marcopontili.com/
+- Source: https://github.com/marcop135/next-storyblok (MIT)
+- Author: Marco Pontili, https://marcopontili.com
+
+## Pages
+
+- [Home](https://nextstory.marcopontili.com/): Northline demo landing page rendered from Storyblok blocks
+- [Pricing](https://nextstory.marcopontili.com/pricing): demo pricing page from the same block contract
+- [German home](https://nextstory.marcopontili.com/de): `de` locale route with hreflang alternates
+- [Privacy](https://nextstory.marcopontili.com/privacy): cookieless self-hosted Matomo, Vercel hosting
+
+## Docs
+
+- [Architecture](https://github.com/marcop135/next-storyblok/blob/main/docs/architecture.md): request path, preview, webhook revalidation
+- [Storyblok schema](https://github.com/marcop135/next-storyblok/blob/main/docs/storyblok-schema.md): block components and fields
+- [Commands](https://github.com/marcop135/next-storyblok/blob/main/docs/commands.md): local setup, tests, preview and webhook URLs

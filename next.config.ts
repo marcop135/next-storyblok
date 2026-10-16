@@ -1,5 +1,40 @@
 import type { NextConfig } from "next";
 
+const isDev = process.env.NODE_ENV !== "production";
+const matomo = "https://mt.marcopontili.com";
+
+/**
+ * App Router streams inline RSC payload scripts, so script-src keeps
+ * 'unsafe-inline'. 'unsafe-eval' and the HMR socket are dev-only.
+ * frame-ancestors lets the Storyblok Visual Editor embed preview pages.
+ */
+const csp = [
+  "default-src 'self'",
+  `script-src 'self' 'unsafe-inline' ${matomo}${isDev ? " 'unsafe-eval'" : ""}`,
+  "style-src 'self' 'unsafe-inline'",
+  `img-src 'self' data: blob: https://a.storyblok.com ${matomo}`,
+  "font-src 'self'",
+  `connect-src 'self' ${matomo}${isDev ? " ws: wss:" : ""}`,
+  "frame-ancestors 'self' https://app.storyblok.com",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "object-src 'none'",
+  ...(isDev ? [] : ["upgrade-insecure-requests"]),
+].join("; ");
+
+const securityHeaders = [
+  { key: "Content-Security-Policy", value: csp },
+  { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains" },
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+  {
+    key: "Link",
+    value:
+      '</sitemap.xml>; rel="sitemap", </llms.txt>; rel="describedby"; type="text/plain"',
+  },
+];
+
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
@@ -8,6 +43,15 @@ const nextConfig: NextConfig = {
         hostname: "a.storyblok.com",
       },
     ],
+  },
+  async headers() {
+    return [
+      { source: "/:path*", headers: securityHeaders },
+      {
+        source: "/matomo.js",
+        headers: [{ key: "Cache-Control", value: "public, max-age=86400" }],
+      },
+    ];
   },
 };
 

@@ -37,4 +37,10 @@ Storyblok Visual Editor
 
 ## Hosting
 
-Production: Vercel + custom domain `https://next-storyblok.marcopontili.com`. DNS CNAME via Cloudflare. Not a static FTP deploy.
+Production: Vercel + custom domain `https://nextstory.marcopontili.com`. DNS CNAME via Cloudflare. Not a static FTP deploy.
+
+## Analytics and headers
+
+- [`public/matomo.js`](../public/matomo.js) loads self-hosted, cookieless Matomo (site 1) after hydration; [`MatomoRouteTracker`](../src/components/MatomoRouteTracker.tsx) records client navigations.
+- [`src/middleware.ts`](../src/middleware.ts) reports AI-assistant fetches (`ChatGPT-User`, `Claude-User`, and the rest of the marcopontili.com access-log needles) to Matomo with `recMode=1` via `waitUntil`. It never changes the response.
+- [`next.config.ts`](../next.config.ts) sets CSP, HSTS, `nosniff`, and Referrer-Policy on every route. `frame-ancestors` allows the Storyblok Visual Editor.

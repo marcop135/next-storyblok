@@ -212,3 +212,98 @@ a {
 .not-found {
   padding: 4rem 0;
 }
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -10rem;
+  z-index: 10;
+  padding: 0.75rem 1rem;
+  border-radius: 0.35rem;
+  background: var(--ink);
+  color: var(--accent-ink);
+  font-weight: 650;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+:focus-visible {
+  outline: 0.1875rem solid var(--accent);
+  outline-offset: 0.1875rem;
+}
+
+.site-footer .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1.5rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+}
+
+.footer-nav a {
+  display: inline-block;
+  padding-block: 0.5rem;
+  color: var(--muted);
+}
+
+.footer-nav a:hover {
+  color: var(--ink);
+}
+
+.prose {
+  max-width: 44rem;
+  padding: 3rem 0 2rem;
+}
+
+.prose h1 {
+  margin: 0;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  letter-spacing: -0.02em;
+}
+
+.prose h2 {
+  margin: 2.25rem 0 0.5rem;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.5rem;
+}
+
+.prose h3 {
+  margin: 1.5rem 0 0.25rem;
+  font-size: 1.1rem;
+}
+
+.prose .meta {
+  color: var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+button.btn {
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+}

@@ -1,6 +1,6 @@
 export const SITE_URL = "https://nextstory.marcopontili.com";
 export const SITE_NAME = "Next Story";
-export const REPO_URL = "https://github.com/marcop135/next-story";
+export const REPO_URL = "https://github.com/marcop135/next-storyblok";
 export const SITE_DESCRIPTION =
   "Next.js App Router marketing site driven by Storyblok blocks: draft preview, publish webhooks, and localized cache refresh.";
 

@@ -3,7 +3,7 @@
 > Next.js App Router marketing site driven by Storyblok blocks. Portfolio proof that editors own copy and structure in a headless CMS while developers own components, draft preview, and cache invalidation.
 
 - Site: https://nextstory.marcopontili.com/
-- Source: https://github.com/marcop135/next-story (MIT)
+- Source: https://github.com/marcop135/next-storyblok (MIT)
 - Author: Marco Pontili, https://marcopontili.com
 
 ## Pages
@@ -18,6 +18,6 @@
 
 ## Docs
 
-- [Architecture](https://github.com/marcop135/next-story/blob/main/docs/architecture.md): request path, preview, webhook revalidation
-- [Storyblok schema](https://github.com/marcop135/next-story/blob/main/docs/storyblok-schema.md): content model as code, seed stories, languages
-- [Commands](https://github.com/marcop135/next-story/blob/main/docs/commands.md): local setup, tests, preview and webhook URLs
+- [Architecture](https://github.com/marcop135/next-storyblok/blob/main/docs/architecture.md): request path, preview, webhook revalidation
+- [Storyblok schema](https://github.com/marcop135/next-storyblok/blob/main/docs/storyblok-schema.md): content model as code, seed stories, languages
+- [Commands](https://github.com/marcop135/next-storyblok/blob/main/docs/commands.md): local setup, tests, preview and webhook URLs

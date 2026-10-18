@@ -9,7 +9,7 @@ Next.js App Router marketing site driven by **Storyblok** blocks. Editors own co
 
 **Live:** [nextstory.marcopontili.com](https://nextstory.marcopontili.com)
 
-[![CI](https://github.com/marcop135/next-story/actions/workflows/ci.yml/badge.svg)](https://github.com/marcop135/next-story/actions/workflows/ci.yml)
+[![CI](https://github.com/marcop135/next-storyblok/actions/workflows/ci.yml/badge.svg)](https://github.com/marcop135/next-storyblok/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ## Click through the demo
@@ -59,7 +59,7 @@ Open http://localhost:3000. Without a token, the seed stories in `storyblok/stor
 
 ## Contributing
 
-See [CONTRIBUTING.md](./CONTRIBUTING.md). Bug reports and feature requests go through [issues](https://github.com/marcop135/next-story/issues). Vulnerabilities go through [SECURITY.md](./SECURITY.md) instead.
+See [CONTRIBUTING.md](./CONTRIBUTING.md). Bug reports and feature requests go through [issues](https://github.com/marcop135/next-storyblok/issues). Vulnerabilities go through [SECURITY.md](./SECURITY.md) instead.
 
 ## Author
 

@@ -14,7 +14,7 @@
 
 ### Changed
 
-- Rename the project and the demo site from Northline to Next Story ([marcop135/next-story](https://github.com/marcop135/next-story)).
+- Rename the project and the demo site from Northline to Next Story; the repository stays `next-storyblok`.
 - Load Fraunces with its optical-size axis so headlines use the display cut.
 - Restyle the README, social, and Open Graph images with the demo site fonts and colors.
 - Credit the author in the footer and drop the footer GitHub link, which the home page already carries.

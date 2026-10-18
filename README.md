@@ -1,11 +1,11 @@
 <p align="center">
-  <img src=".github/brand/readme-light.png#gh-light-mode-only" alt="next-storyblok: editors own the content, developers own the components" width="100%" />
-  <img src=".github/brand/readme-dark.png#gh-dark-mode-only" alt="next-storyblok: editors own the content, developers own the components" width="100%" />
+  <img src=".github/brand/readme-light.png#gh-light-mode-only" alt="Next Story: editors own the content, developers own the components" width="100%" />
+  <img src=".github/brand/readme-dark.png#gh-dark-mode-only" alt="Next Story: editors own the content, developers own the components" width="100%" />
 </p>
 
-# next-storyblok
+# Next Story
 
-Next.js App Router marketing site driven by **Storyblok** blocks. Editors own copy, structure, and translations in a headless CMS; developers own the components, draft preview, and cache invalidation. In-app demo brand: **Northline**.
+Next.js App Router marketing site driven by **Storyblok** blocks. Editors own copy, structure, and translations in a headless CMS; developers own the components, draft preview, and cache invalidation.
 
 **Live:** [nextstory.marcopontili.com](https://nextstory.marcopontili.com)
 
@@ -57,10 +57,14 @@ Open http://localhost:3000. Without a token, the seed stories in `storyblok/stor
 - Cookieless self-hosted Matomo; AI-assistant fetches reported from the proxy ([privacy](https://nextstory.marcopontili.com/privacy))
 - Hand-written CSS with light and dark themes + `next/font`
 
-## Contributing and security
+## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md).
+See [CONTRIBUTING.md](./CONTRIBUTING.md). Bug reports and feature requests go through [issues](https://github.com/marcop135/next-storyblok/issues). Vulnerabilities go through [SECURITY.md](./SECURITY.md) instead.
+
+## Author
+
+[Marco Pontili](https://marcopontili.com)
 
 ## License
 
-MIT. See [LICENSE](LICENSE).
+[MIT](./LICENSE)

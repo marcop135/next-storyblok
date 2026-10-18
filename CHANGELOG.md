@@ -7,6 +7,8 @@
 
 ## [Unreleased]
 
+## [0.4.2] - 2026-10-18
+
 ### Changed
 
 - Simplify the social preview and Open Graph images so they stay readable as small link previews.

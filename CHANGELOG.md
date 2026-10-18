@@ -10,10 +10,12 @@
 ### Added
 
 - Add a [For agents](https://nextstory.marcopontili.com/for-agents) page, linked from the footer, sitemap, and `llms.txt`.
+- Collapse the header navigation into a menu button on small screens.
 
 ### Changed
 
-- Rename the project to Next Story ([marcop135/next-story](https://github.com/marcop135/next-story)).
+- Rename the project and the demo site from Northline to Next Story ([marcop135/next-story](https://github.com/marcop135/next-story)).
+- Load Fraunces with its optical-size axis so headlines use the display cut.
 - Restyle the README, social, and Open Graph images with the demo site fonts and colors.
 - Credit the author in the footer and drop the footer GitHub link, which the home page already carries.
 

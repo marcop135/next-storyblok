@@ -5,7 +5,7 @@
 
 # Next Story
 
-Next.js App Router marketing site driven by **Storyblok** blocks. Editors own copy, structure, and translations in a headless CMS; developers own the components, draft preview, and cache invalidation. In-app demo brand: **Northline**.
+Next.js App Router marketing site driven by **Storyblok** blocks. Editors own copy, structure, and translations in a headless CMS; developers own the components, draft preview, and cache invalidation.
 
 **Live:** [nextstory.marcopontili.com](https://nextstory.marcopontili.com)
 

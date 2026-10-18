@@ -20,6 +20,7 @@ import "./globals.css";
 
 const display = Fraunces({
   subsets: ["latin"],
+  axes: ["opsz"],
   variable: "--font-display",
   display: "swap",
 });
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default: "Next Story: Next.js and Storyblok marketing demo",
-    template: "%s · Northline",
+    template: "%s · Next Story",
   },
   description: SITE_DESCRIPTION,
   applicationName: SITE_NAME,
@@ -73,7 +74,7 @@ async function chromeCopy(): Promise<Record<Locale, ChromeCopy>> {
       const nav = config?.header_nav?.length
         ? config.header_nav.map(({ _uid, label, href }) => ({ _uid, label, href }))
         : fallbackNav.map((link) => ({ ...link, href: prefix + link.href }));
-      const footerNote = config?.footer_note || "Northline demo · Next.js App Router · Storyblok";
+      const footerNote = config?.footer_note || "Next Story demo · Next.js App Router · Storyblok";
       return [locale, { nav, footerNote }] as const;
     }),
   );

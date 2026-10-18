@@ -2,7 +2,7 @@
   "name": "next-story",
   "version": "0.4.2",
   "private": false,
-  "description": "Next.js App Router + Storyblok marketing-site ownership demo (Northline)",
+  "description": "Next.js App Router + Storyblok marketing-site ownership demo",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

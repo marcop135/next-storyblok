@@ -8,8 +8,8 @@ const { usePathname } = vi.hoisted(() => ({ usePathname: vi.fn() }));
 vi.mock("next/navigation", () => ({ usePathname }));
 
 const copy: Record<"en" | "de", ChromeCopy> = {
-  en: { nav: [{ _uid: "a", label: "Pricing", href: "/pricing" }], footerNote: "Northline demo" },
-  de: { nav: [{ _uid: "a", label: "Preise", href: "/de/pricing" }], footerNote: "Northline-Demo" },
+  en: { nav: [{ _uid: "a", label: "Pricing", href: "/pricing" }], footerNote: "Next Story demo" },
+  de: { nav: [{ _uid: "a", label: "Preise", href: "/de/pricing" }], footerNote: "Next-Story-Demo" },
 };
 
 beforeEach(() => usePathname.mockReset());
@@ -28,7 +28,7 @@ it("switches the header and footer back to English on English routes", () => {
   const header = renderToStaticMarkup(createElement(SiteHeader, { copy }));
   const footer = renderToStaticMarkup(createElement(SiteFooter, { copy }));
   expect(header).toContain('href="/pricing"');
-  expect(footer).toContain("Northline demo");
+  expect(footer).toContain("Next Story demo");
   expect(footer).toContain("Built and maintained by");
   expect(footer).toContain(">Marco Pontili<");
 });

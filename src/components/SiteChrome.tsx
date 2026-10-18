@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import LanguageSwitch from "@/components/LanguageSwitch";
 import { defaultLocale, localeForPathname, type Locale } from "@/lib/i18n";
@@ -28,7 +28,19 @@ function useLocale(): Locale {
 
 export function SiteHeader({ copy }: { copy: Record<Locale, ChromeCopy> }) {
   const locale = useLocale();
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
   const home = locale === defaultLocale ? "/" : `/${locale}`;
+
+  // Close the small-screen menu after navigating or on Escape.
+  useEffect(() => setOpen(false), [pathname]);
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (event: KeyboardEvent) => event.key === "Escape" && setOpen(false);
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
+
   return (
     <>
       <a className="skip-link" href="#main">
@@ -37,9 +49,24 @@ export function SiteHeader({ copy }: { copy: Record<Locale, ChromeCopy> }) {
       <header className="site-header">
         <div className="wrap">
           <Link className="brand" href={home}>
-            Northline
+            Next Story
           </Link>
-          <nav className="nav" aria-label={locale === "de" ? "Hauptnavigation" : "Primary"}>
+          <button
+            type="button"
+            className="menu-toggle"
+            aria-expanded={open}
+            aria-controls="site-nav"
+            onClick={() => setOpen(!open)}
+          >
+            <span className="menu-toggle__icon" aria-hidden="true" />
+            <span className="visually-hidden">{locale === "de" ? "Menü" : "Menu"}</span>
+          </button>
+          <nav
+            id="site-nav"
+            className="nav"
+            data-open={open}
+            aria-label={locale === "de" ? "Hauptnavigation" : "Primary"}
+          >
             {copy[locale].nav.map((link) => (
               <Link key={link._uid} href={link.href}>
                 {link.label}

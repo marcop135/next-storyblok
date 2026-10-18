@@ -68,9 +68,9 @@ describe("matomoTrackingUrl", () => {
   });
 });
 
-describe("middleware", () => {
+describe("proxy", () => {
   async function run(ua: string, path: string) {
-    const { middleware } = await import("@/middleware");
+    const { proxy } = await import("@/proxy");
     const fetchMock = vi.fn().mockResolvedValue(new Response(null, { status: 204 }));
     vi.stubGlobal("fetch", fetchMock);
     const waitUntil = vi.fn();
@@ -79,7 +79,7 @@ describe("middleware", () => {
       nextUrl: new URL(`https://nextstory.marcopontili.com${path}`),
       headers: new Headers({ "user-agent": ua }),
     };
-    const result = middleware(request as never, { waitUntil } as never);
+    const result = proxy(request as never, { waitUntil } as never);
     return { result, fetchMock, waitUntil };
   }
 
@@ -96,10 +96,10 @@ describe("middleware", () => {
   });
 
   it("swallows tracker failures", async () => {
-    const { middleware } = await import("@/middleware");
+    const { proxy } = await import("@/proxy");
     vi.stubGlobal("fetch", vi.fn().mockRejectedValue(new Error("403")));
     const waitUntil = vi.fn();
-    middleware(
+    proxy(
       {
         url: "https://nextstory.marcopontili.com/",
         nextUrl: new URL("https://nextstory.marcopontili.com/"),

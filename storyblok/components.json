@@ -1,0 +1,265 @@
+[
+  {
+    "name": "page",
+    "display_name": "Page",
+    "is_root": true,
+    "is_nestable": false,
+    "schema": {
+      "seo_title": {
+        "type": "text",
+        "translatable": true,
+        "pos": 0
+      },
+      "seo_description": {
+        "type": "textarea",
+        "translatable": true,
+        "pos": 1
+      },
+      "show_block_labels": {
+        "type": "boolean",
+        "description": "Label each section with its component name",
+        "pos": 2
+      },
+      "body": {
+        "type": "bloks",
+        "restrict_components": true,
+        "component_whitelist": [
+          "hero",
+          "feature_grid",
+          "steps",
+          "rich_text",
+          "cta_band"
+        ],
+        "pos": 3
+      }
+    }
+  },
+  {
+    "name": "hero",
+    "display_name": "Hero",
+    "is_root": false,
+    "is_nestable": true,
+    "schema": {
+      "eyebrow": {
+        "type": "text",
+        "translatable": true,
+        "pos": 0
+      },
+      "headline": {
+        "type": "text",
+        "translatable": true,
+        "required": true,
+        "pos": 1
+      },
+      "subheadline": {
+        "type": "textarea",
+        "translatable": true,
+        "pos": 2
+      },
+      "cta_label": {
+        "type": "text",
+        "translatable": true,
+        "pos": 3
+      },
+      "cta_href": {
+        "type": "text",
+        "translatable": true,
+        "pos": 4
+      },
+      "secondary_label": {
+        "type": "text",
+        "translatable": true,
+        "pos": 5
+      },
+      "secondary_href": {
+        "type": "text",
+        "translatable": true,
+        "pos": 6
+      }
+    }
+  },
+  {
+    "name": "feature_grid",
+    "display_name": "Feature grid",
+    "is_root": false,
+    "is_nestable": true,
+    "schema": {
+      "headline": {
+        "type": "text",
+        "translatable": true,
+        "pos": 0
+      },
+      "features": {
+        "type": "bloks",
+        "restrict_components": true,
+        "component_whitelist": [
+          "feature"
+        ],
+        "pos": 1
+      }
+    }
+  },
+  {
+    "name": "feature",
+    "display_name": "Feature",
+    "is_root": false,
+    "is_nestable": true,
+    "schema": {
+      "title": {
+        "type": "text",
+        "translatable": true,
+        "required": true,
+        "pos": 0
+      },
+      "text": {
+        "type": "textarea",
+        "translatable": true,
+        "pos": 1
+      },
+      "link_href": {
+        "type": "text",
+        "translatable": true,
+        "description": "Optional path; turns the card into a link",
+        "pos": 2
+      }
+    }
+  },
+  {
+    "name": "steps",
+    "display_name": "Steps",
+    "is_root": false,
+    "is_nestable": true,
+    "schema": {
+      "headline": {
+        "type": "text",
+        "translatable": true,
+        "pos": 0
+      },
+      "intro": {
+        "type": "textarea",
+        "translatable": true,
+        "pos": 1
+      },
+      "items": {
+        "type": "bloks",
+        "restrict_components": true,
+        "component_whitelist": [
+          "step"
+        ],
+        "pos": 2
+      }
+    }
+  },
+  {
+    "name": "step",
+    "display_name": "Step",
+    "is_root": false,
+    "is_nestable": true,
+    "schema": {
+      "title": {
+        "type": "text",
+        "translatable": true,
+        "required": true,
+        "pos": 0
+      },
+      "text": {
+        "type": "textarea",
+        "translatable": true,
+        "pos": 1
+      },
+      "file": {
+        "type": "text",
+        "description": "Repository path that implements this step",
+        "pos": 2
+      }
+    }
+  },
+  {
+    "name": "rich_text",
+    "display_name": "Rich text",
+    "is_root": false,
+    "is_nestable": true,
+    "schema": {
+      "headline": {
+        "type": "text",
+        "translatable": true,
+        "pos": 0
+      },
+      "body": {
+        "type": "richtext",
+        "translatable": true,
+        "pos": 1
+      }
+    }
+  },
+  {
+    "name": "cta_band",
+    "display_name": "CTA band",
+    "is_root": false,
+    "is_nestable": true,
+    "schema": {
+      "headline": {
+        "type": "text",
+        "translatable": true,
+        "required": true,
+        "pos": 0
+      },
+      "text": {
+        "type": "textarea",
+        "translatable": true,
+        "pos": 1
+      },
+      "cta_label": {
+        "type": "text",
+        "translatable": true,
+        "pos": 2
+      },
+      "cta_href": {
+        "type": "text",
+        "translatable": true,
+        "pos": 3
+      }
+    }
+  },
+  {
+    "name": "config",
+    "display_name": "Site config",
+    "is_root": true,
+    "is_nestable": false,
+    "schema": {
+      "header_nav": {
+        "type": "bloks",
+        "restrict_components": true,
+        "component_whitelist": [
+          "nav_link"
+        ],
+        "pos": 0
+      },
+      "footer_note": {
+        "type": "text",
+        "translatable": true,
+        "pos": 1
+      }
+    }
+  },
+  {
+    "name": "nav_link",
+    "display_name": "Nav link",
+    "is_root": false,
+    "is_nestable": true,
+    "schema": {
+      "label": {
+        "type": "text",
+        "translatable": true,
+        "required": true,
+        "pos": 0
+      },
+      "href": {
+        "type": "text",
+        "translatable": true,
+        "required": true,
+        "pos": 1
+      }
+    }
+  }
+]

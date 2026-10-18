@@ -31,11 +31,14 @@ export function localeForPathname(pathname: string): Locale {
   return isLocale(first) ? first : defaultLocale;
 }
 
+/** English-only app routes outside the Storyblok story tree. */
+const APP_ROUTES = ["/privacy", "/for-agents"];
+
 /** The same page in the other language; routes outside the story tree fall back to that locale's home. */
 export function switchLocalePath(pathname: string, target: Locale): string {
   const current = localeForPathname(pathname);
   const rest = current === defaultLocale ? pathname : pathname.slice(current.length + 1) || "/";
-  const isStoryRoute = !rest.startsWith("/privacy");
+  const isStoryRoute = !APP_ROUTES.some((route) => rest.startsWith(route));
   const base = isStoryRoute ? rest : "/";
   if (target === defaultLocale) return base;
   return base === "/" ? `/${target}` : `/${target}${base}`;

@@ -28,7 +28,7 @@ export async function generateMetadata({
 
   const content = result.story.content as PageBlok;
   const title =
-    content.seo_title || result.story.name || "Northline";
+    content.seo_title || result.story.name || "Next Story";
   const description = content.seo_description || undefined;
 
   const canonical = pathname ? `/${pathname}` : "/";

@@ -10,7 +10,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const paths = slugs.flatMap((slug) =>
     locales.map((locale) => publicPathForSlug(slug, locale)),
   );
-  return [...new Set([...paths, "/privacy"])].map((path) => ({
+  return [...new Set([...paths, "/privacy", "/for-agents"])].map((path) => ({
     url: path === "/" ? `${SITE_URL}/` : `${SITE_URL}${path}`,
   }));
 }

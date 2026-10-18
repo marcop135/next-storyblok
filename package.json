@@ -1,6 +1,6 @@
 {
   "name": "next-storyblok",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "private": false,
   "description": "Next.js App Router + Storyblok marketing-site ownership demo",
   "scripts": {

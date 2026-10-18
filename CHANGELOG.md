@@ -7,6 +7,8 @@
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-10-18
+
 ### Added
 
 - Add a [For agents](https://nextstory.marcopontili.com/for-agents) page, linked from the footer, sitemap, and `llms.txt`.

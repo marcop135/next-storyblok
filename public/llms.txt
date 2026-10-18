@@ -9,12 +9,14 @@
 ## Pages
 
 - [Home](https://nextstory.marcopontili.com/): Northline demo landing page rendered from Storyblok blocks
+- [How it works](https://nextstory.marcopontili.com/how-it-works): content model, draft preview, publish webhook, and cache tags, step by step
+- [Blocks](https://nextstory.marcopontili.com/blocks): every Storyblok block on the site, labelled with its component name
 - [Pricing](https://nextstory.marcopontili.com/pricing): demo pricing page from the same block contract
-- [German home](https://nextstory.marcopontili.com/de): `de` locale route with hreflang alternates
+- [German home](https://nextstory.marcopontili.com/de): German routes served from Storyblok field-level translations
 - [Privacy](https://nextstory.marcopontili.com/privacy): cookieless self-hosted Matomo, Vercel hosting
 
 ## Docs
 
 - [Architecture](https://github.com/marcop135/next-storyblok/blob/main/docs/architecture.md): request path, preview, webhook revalidation
-- [Storyblok schema](https://github.com/marcop135/next-storyblok/blob/main/docs/storyblok-schema.md): block components and fields
+- [Storyblok schema](https://github.com/marcop135/next-storyblok/blob/main/docs/storyblok-schema.md): content model as code, seed stories, languages
 - [Commands](https://github.com/marcop135/next-storyblok/blob/main/docs/commands.md): local setup, tests, preview and webhook URLs

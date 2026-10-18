@@ -10,7 +10,12 @@
     "lint": "next lint",
     "test": "vitest run",
     "changelog:lint": "node scripts/changelog-lint.mjs",
-    "brand:render": "node .github/brand/render.mjs"
+    "brand:render": "node .github/brand/render.mjs",
+    "brand:check": "node .github/brand/render.mjs --check",
+    "storyblok:types": "node scripts/storyblok-types.mjs",
+    "storyblok:types:check": "node scripts/storyblok-types.mjs --check",
+    "storyblok:push": "node --env-file-if-exists=.env scripts/storyblok-push.mjs",
+    "smoke": "node scripts/smoke.mjs"
   },
   "dependencies": {
     "@storyblok/react": "^7.3.1",

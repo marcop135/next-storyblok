@@ -8,7 +8,7 @@ export default function NotFound() {
         No story for this path
         {process.env.STORYBLOK_DELIVERY_API_TOKEN
           ? " in Storyblok (or mock fallback when no token)."
-          : " in mock data. Add a token and matching story, or use / and /pricing."}
+          : " in the seed stories under storyblok/stories."}
       </p>
       <p>
         <Link href="/">Back home</Link>

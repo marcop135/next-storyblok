@@ -85,7 +85,9 @@ describe("middleware", () => {
 
   it("reports AI-assistant page hits without touching the response", async () => {
     const { result, fetchMock, waitUntil } = await run("Claude-User/1.0", "/pricing");
-    expect(result).toBeUndefined();
+    expect(result.headers.get("x-middleware-next")).toBe("1");
+    expect(result.headers.get("x-middleware-rewrite")).toBeNull();
+    expect(result.status).toBe(200);
     expect(waitUntil).toHaveBeenCalledOnce();
     expect(fetchMock).toHaveBeenCalledWith(
       expect.stringContaining("https://mt.marcopontili.com/m/matomo.php?idsite=5"),
@@ -106,6 +108,13 @@ describe("middleware", () => {
       { waitUntil } as never,
     );
     await expect(waitUntil.mock.calls[0][0]).resolves.toBeUndefined();
+  });
+
+  it("passes the path locale to the root layout as a request header", async () => {
+    const german = await run("Mozilla/5.0 Chrome/141.0", "/de/pricing");
+    expect(german.result.headers.get("x-middleware-request-x-site-locale")).toBe("de");
+    const english = await run("Mozilla/5.0 Chrome/141.0", "/denmark");
+    expect(english.result.headers.get("x-middleware-request-x-site-locale")).toBe("en");
   });
 
   it("ignores browsers and static assets", async () => {

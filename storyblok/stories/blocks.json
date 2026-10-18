@@ -1,0 +1,294 @@
+{
+  "name": "Blocks",
+  "slug": "blocks",
+  "content": {
+    "_uid": "blocks-page",
+    "component": "page",
+    "show_block_labels": true,
+    "seo_title": "Block library: every Storyblok component on this site",
+    "seo_title__i18n__de": "Block-Bibliothek: jede Storyblok-Komponente dieser Site",
+    "seo_description": "Each Storyblok block this Next.js site renders, shown once and labelled with its component name.",
+    "seo_description__i18n__de": "Jeder Storyblok-Block dieser Next.js-Site, einmal gezeigt und mit seinem Komponentennamen beschriftet.",
+    "body": [
+      {
+        "_uid": "blocks-hero",
+        "component": "hero",
+        "eyebrow": "Block library",
+        "eyebrow__i18n__de": "Block-Bibliothek",
+        "headline": "Every block on this site",
+        "headline__i18n__de": "Jeder Block dieser Site",
+        "subheadline": "This page is assembled from the same blocks as the rest of the site. The label above each section is its Storyblok component name.",
+        "subheadline__i18n__de": "Diese Seite besteht aus denselben Blöcken wie der Rest der Site. Das Label über jedem Abschnitt ist sein Storyblok-Komponentenname.",
+        "cta_label": "How it works",
+        "cta_label__i18n__de": "So funktioniert es",
+        "cta_href": "/how-it-works",
+        "cta_href__i18n__de": "/de/how-it-works"
+      },
+      {
+        "_uid": "blocks-grid",
+        "component": "feature_grid",
+        "headline": "Feature grid",
+        "headline__i18n__de": "Feature-Raster",
+        "features": [
+          {
+            "_uid": "blocks-feature-plain",
+            "component": "feature",
+            "title": "Title and text",
+            "title__i18n__de": "Titel und Text",
+            "text": "Each card is a nested feature block with a title and a short text.",
+            "text__i18n__de": "Jede Karte ist ein verschachtelter Feature-Block mit Titel und kurzem Text."
+          },
+          {
+            "_uid": "blocks-feature-link",
+            "component": "feature",
+            "title": "Optional link",
+            "title__i18n__de": "Optionaler Link",
+            "text": "Add a path and the whole card becomes a link.",
+            "text__i18n__de": "Mit einem Pfad wird die ganze Karte zum Link.",
+            "link_href": "/pricing",
+            "link_href__i18n__de": "/de/pricing"
+          }
+        ]
+      },
+      {
+        "_uid": "blocks-steps",
+        "component": "steps",
+        "headline": "Steps",
+        "headline__i18n__de": "Schritte",
+        "intro": "Numbered in the order editors arrange them.",
+        "intro__i18n__de": "Nummeriert in der Reihenfolge, die die Redaktion festlegt.",
+        "items": [
+          {
+            "_uid": "blocks-step-order",
+            "component": "step",
+            "title": "Drag to reorder",
+            "title__i18n__de": "Zum Sortieren ziehen",
+            "text": "Moving a step in Storyblok renumbers the list.",
+            "text__i18n__de": "Wird ein Schritt in Storyblok verschoben, ändert sich die Nummerierung."
+          },
+          {
+            "_uid": "blocks-step-file",
+            "component": "step",
+            "title": "Link a file",
+            "title__i18n__de": "Eine Datei verlinken",
+            "text": "A step can name the file that implements it.",
+            "text__i18n__de": "Ein Schritt kann die Datei nennen, die ihn umsetzt.",
+            "file": "src/components/Steps.tsx"
+          }
+        ]
+      },
+      {
+        "_uid": "blocks-rich",
+        "component": "rich_text",
+        "headline": "Rich text",
+        "headline__i18n__de": "Rich Text",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Storyblok rich text renders on the server with "
+                },
+                {
+                  "type": "text",
+                  "text": "StoryblokServerRichText",
+                  "marks": [
+                    {
+                      "type": "code"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": ". It supports "
+                },
+                {
+                  "type": "text",
+                  "text": "bold",
+                  "marks": [
+                    {
+                      "type": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": ", links, and lists:"
+                }
+              ]
+            },
+            {
+              "type": "bullet_list",
+              "content": [
+                {
+                  "type": "list_item",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "paragraphs and headings"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "list_item",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "inline code and links"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "list_item",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "the rich text docs",
+                          "marks": [
+                            {
+                              "type": "link",
+                              "attrs": {
+                                "href": "https://www.storyblok.com/docs/concepts/fields/rich-text",
+                                "linktype": "url",
+                                "target": "_blank"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "body__i18n__de": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Storyblok Rich Text wird auf dem Server mit "
+                },
+                {
+                  "type": "text",
+                  "text": "StoryblokServerRichText",
+                  "marks": [
+                    {
+                      "type": "code"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": " gerendert. Unterstützt werden "
+                },
+                {
+                  "type": "text",
+                  "text": "Fettdruck",
+                  "marks": [
+                    {
+                      "type": "bold"
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": ", Links und Listen:"
+                }
+              ]
+            },
+            {
+              "type": "bullet_list",
+              "content": [
+                {
+                  "type": "list_item",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Absätze und Überschriften"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "list_item",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "Inline-Code und Links"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "list_item",
+                  "content": [
+                    {
+                      "type": "paragraph",
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "die Rich-Text-Dokumentation",
+                          "marks": [
+                            {
+                              "type": "link",
+                              "attrs": {
+                                "href": "https://www.storyblok.com/docs/concepts/fields/rich-text",
+                                "linktype": "url",
+                                "target": "_blank"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "_uid": "blocks-cta",
+        "component": "cta_band",
+        "headline": "Call to action band",
+        "headline__i18n__de": "Call-to-Action-Band",
+        "text": "One headline, one sentence, one link.",
+        "text__i18n__de": "Eine Überschrift, ein Satz, ein Link.",
+        "cta_label": "See pricing",
+        "cta_label__i18n__de": "Preise ansehen",
+        "cta_href": "/pricing",
+        "cta_href__i18n__de": "/de/pricing"
+      }
+    ]
+  }
+}

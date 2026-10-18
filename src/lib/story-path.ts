@@ -1,5 +1,12 @@
 import { defaultLocale, isLocale, type Locale } from "@/lib/i18n";
 
+/** Global settings story (navigation, footer); never served as a page. */
+export const CONFIG_SLUG = "config";
+
+export function isPageSlug(slug: string): boolean {
+  return slug !== CONFIG_SLUG;
+}
+
 export type ParsedStoryPath = {
   locale: Locale;
   /** Storyblok story slug, e.g. `home` or `pricing`. */
@@ -47,7 +54,7 @@ export function parseStorySegments(
 }
 
 export function publicPathForSlug(slug: string, locale: Locale = defaultLocale): string {
-  const base = slug === "home" || slug === "" ? "" : slug;
+  const base = slug === "home" || slug === "" || slug === CONFIG_SLUG ? "" : slug;
   if (locale === defaultLocale) {
     return base ? `/${base}` : "/";
   }

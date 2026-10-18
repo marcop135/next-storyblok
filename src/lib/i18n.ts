@@ -3,7 +3,7 @@ export const locales = ["en", "de"] as const;
 export type Locale = (typeof locales)[number];
 export const defaultLocale: Locale = "en";
 
-/** Request header the middleware sets from the first path segment. */
+/** Request header the proxy sets from the first path segment. */
 export const LOCALE_HEADER = "x-site-locale";
 
 export function isLocale(value: string): value is Locale {

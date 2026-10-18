@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint .",
     "test": "vitest run",
     "changelog:lint": "node scripts/changelog-lint.mjs",
     "brand:render": "node .github/brand/render.mjs",
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@storyblok/react": "^7.3.1",
-    "next": "^15.5.4",
+    "next": "^16.4.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },

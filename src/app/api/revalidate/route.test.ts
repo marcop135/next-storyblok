@@ -92,3 +92,8 @@ it("refreshes the shared layout when the config story is published", async () =>
   expect(revalidatePath).toHaveBeenCalledWith("/", "layout");
   expect(revalidateTag).toHaveBeenCalledOnce();
 });
+
+it("refreshes the sitemap when a story is published", async () => {
+  await POST(request({ action: "published", story_id: 9, full_slug: "how-it-works" }));
+  expect(revalidatePath).toHaveBeenCalledWith("/sitemap.xml");
+});

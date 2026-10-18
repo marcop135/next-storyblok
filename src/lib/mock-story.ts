@@ -1,164 +1,58 @@
 import type { ISbStoryData } from "@storyblok/react";
 
-/** Local fallback so `npm run dev` works before a Storyblok space exists. */
-export const mockHomeStory = {
-  name: "Home",
-  created_at: "2026-10-09T00:00:00.000Z",
-  published_at: null,
-  id: 1,
-  uuid: "00000000-0000-0000-0000-000000000001",
-  slug: "home",
-  full_slug: "home",
-  sort_by_date: null,
-  position: 0,
-  tag_list: [],
-  is_startpage: true,
-  parent_id: 0,
-  meta_data: null,
-  group_id: "00000000-0000-0000-0000-000000000001",
-  first_published_at: null,
-  release_id: null,
-  lang: "default",
-  path: null,
-  alternates: [],
-  default_full_slug: null,
-  translated_slugs: null,
-  content: {
-    _uid: "page-home",
-    component: "page",
-    seo_title: "Northline — Localized marketing sites that ship",
-    seo_description:
-      "Northline helps product and marketing teams publish localized pages from one Storyblok-driven Next.js stack.",
-    body: [
-      {
-        _uid: "hero-1",
-        component: "hero",
-        eyebrow: "Northline",
-        headline: "Ship every market from one content model",
-        subheadline:
-          "Editors own copy and structure in Storyblok. Developers own the Next.js components, preview, and cache.",
-        cta_label: "See pricing",
-        cta_href: "/pricing",
-      },
-      {
-        _uid: "grid-1",
-        component: "feature_grid",
-        headline: "Built for marketing-site ownership",
-        features: [
-          {
-            _uid: "f1",
-            component: "feature",
-            title: "Block-based pages",
-            text: "Hero, feature grid, and CTA band map 1:1 to Storyblok components. New sections are code, not CMS plugins.",
-          },
-          {
-            _uid: "f2",
-            component: "feature",
-            title: "Editor-safe changes",
-            text: "Publish in Storyblok. The app revalidates. No deploy for a headline tweak.",
-          },
-          {
-            _uid: "f3",
-            component: "feature",
-            title: "Draft preview",
-            text: "Visual Editor and draftMode show unpublished stories before they go live.",
-          },
-        ],
-      },
-      {
-        _uid: "cta-1",
-        component: "cta_band",
-        headline: "Ready when your markets are",
-        text: "Connect a Storyblok space, point the preview URL, and Northline pages stay CMS-owned from day one.",
-        cta_label: "View pricing",
-        cta_href: "/pricing",
-      },
-    ],
-  },
-} as unknown as ISbStoryData;
+import { localizeContent } from "@/lib/localize";
+import blocks from "../../storyblok/stories/blocks.json";
+import config from "../../storyblok/stories/config.json";
+import home from "../../storyblok/stories/home.json";
+import howItWorks from "../../storyblok/stories/how-it-works.json";
+import pricing from "../../storyblok/stories/pricing.json";
 
-export const mockPricingStory = {
-  name: "Pricing",
-  created_at: "2026-10-09T00:00:00.000Z",
-  published_at: null,
-  id: 2,
-  uuid: "00000000-0000-0000-0000-000000000002",
-  slug: "pricing",
-  full_slug: "pricing",
-  sort_by_date: null,
-  position: 1,
-  tag_list: [],
-  is_startpage: false,
-  parent_id: 0,
-  meta_data: null,
-  group_id: "00000000-0000-0000-0000-000000000002",
-  first_published_at: null,
-  release_id: null,
-  lang: "default",
-  path: null,
-  alternates: [],
-  default_full_slug: null,
-  translated_slugs: null,
-  content: {
-    _uid: "page-pricing",
-    component: "page",
-    seo_title: "Pricing — Northline",
-    seo_description:
-      "Simple plans for teams that want Storyblok-driven marketing pages without a CMS rebuild every quarter.",
-    body: [
-      {
-        _uid: "hero-pricing",
-        component: "hero",
-        eyebrow: "Pricing",
-        headline: "One content model. Every locale.",
-        subheadline:
-          "Start with the Starter space. Grow when markets and editors do. No per-page redesign tax.",
-        cta_label: "Back home",
-        cta_href: "/",
-      },
-      {
-        _uid: "grid-pricing",
-        component: "feature_grid",
-        headline: "What you get",
-        features: [
-          {
-            _uid: "p1",
-            component: "feature",
-            title: "Starter",
-            text: "Home + pricing pages, draft preview, and publish webhooks on the free Storyblok Starter.",
-          },
-          {
-            _uid: "p2",
-            component: "feature",
-            title: "Growth",
-            text: "More locales, SEO fields per page, and on-demand revalidation as traffic climbs.",
-          },
-          {
-            _uid: "p3",
-            component: "feature",
-            title: "Owner seat",
-            text: "You keep the component map and the Vercel project. Editors keep the stories.",
-          },
-        ],
-      },
-      {
-        _uid: "cta-pricing",
-        component: "cta_band",
-        headline: "Prefer a walkthrough?",
-        text: "This page is the same block system as home. Swap copy in Storyblok and the route updates.",
-        cta_label: "Go home",
-        cta_href: "/",
-      },
-    ],
-  },
-} as unknown as ISbStoryData;
+type SeedStory = { name: string; slug: string; content: Record<string, unknown> };
 
-export function mockStoryForSlug(slug: string): ISbStoryData | null {
-  if (slug === "home" || slug === "") {
-    return mockHomeStory;
-  }
-  if (slug === "pricing") {
-    return mockPricingStory;
-  }
-  return null;
+/**
+ * Offline stories so `npm run dev` works before a Storyblok space exists.
+ * They are the same seed files `npm run storyblok:push` sends to the space.
+ */
+const seeds: SeedStory[] = [home, howItWorks, blocks, pricing, config];
+
+function toStory(seed: SeedStory, index: number, language?: string): ISbStoryData {
+  const id = index + 1;
+  const uuid = `00000000-0000-0000-0000-${String(id).padStart(12, "0")}`;
+  return {
+    name: seed.name,
+    created_at: "2026-10-09T00:00:00.000Z",
+    published_at: null,
+    id,
+    uuid,
+    slug: seed.slug,
+    full_slug: seed.slug,
+    sort_by_date: null,
+    position: index,
+    tag_list: [],
+    is_startpage: false,
+    parent_id: 0,
+    meta_data: null,
+    group_id: uuid,
+    first_published_at: null,
+    release_id: null,
+    lang: language ?? "default",
+    path: null,
+    alternates: [],
+    default_full_slug: null,
+    translated_slugs: null,
+    content: localizeContent(seed.content, language),
+  } as unknown as ISbStoryData;
 }
+
+/** Slugs of the offline stories that render as pages. */
+export const mockPageSlugs = seeds
+  .filter((seed) => seed.content.component === "page")
+  .map((seed) => seed.slug);
+
+export function mockStoryForSlug(slug: string, language?: string): ISbStoryData | null {
+  const path = slug === "" ? "home" : slug;
+  const index = seeds.findIndex((seed) => seed.slug === path);
+  return index === -1 ? null : toStory(seeds[index], index, language);
+}
+
+export const mockHomeStory = mockStoryForSlug("home")!;

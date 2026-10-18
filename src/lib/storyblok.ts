@@ -5,12 +5,18 @@ import Feature from "@/components/Feature";
 import FeatureGrid from "@/components/FeatureGrid";
 import Hero from "@/components/Hero";
 import Page from "@/components/Page";
+import RichText from "@/components/RichText";
+import Step from "@/components/Step";
+import Steps from "@/components/Steps";
 
 export const storyblokComponents = {
   page: Page,
   hero: Hero,
   feature_grid: FeatureGrid,
   feature: Feature,
+  steps: Steps,
+  step: Step,
+  rich_text: RichText,
   cta_band: CtaBand,
 };
 

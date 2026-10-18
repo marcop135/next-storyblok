@@ -85,3 +85,10 @@ it("acknowledges unrelated events without invalidating published pages", async (
   expect(revalidateTag).not.toHaveBeenCalled();
   expect(revalidatePath).not.toHaveBeenCalled();
 });
+
+it("refreshes the shared layout when the config story is published", async () => {
+  const response = await POST(request({ action: "published", story_id: 7, full_slug: "config" }));
+  expect(response.status).toBe(200);
+  expect(revalidatePath).toHaveBeenCalledWith("/", "layout");
+  expect(revalidateTag).toHaveBeenCalledOnce();
+});

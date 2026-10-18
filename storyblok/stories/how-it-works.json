@@ -1,0 +1,168 @@
+{
+  "name": "How it works",
+  "slug": "how-it-works",
+  "content": {
+    "_uid": "how-page",
+    "component": "page",
+    "seo_title": "How it works: from draft to live",
+    "seo_title__i18n__de": "So funktioniert es: vom Entwurf zur Live-Seite",
+    "seo_description": "What happens between a change in Storyblok and the live Next.js page: content model, draft preview, publish webhook, and cache tags.",
+    "seo_description__i18n__de": "Was zwischen einer Änderung in Storyblok und der Live-Seite passiert: Content-Modell, Entwurfsvorschau, Publish-Webhook und Cache-Tags.",
+    "body": [
+      {
+        "_uid": "how-hero",
+        "component": "hero",
+        "eyebrow": "How it works",
+        "eyebrow__i18n__de": "So funktioniert es",
+        "headline": "From draft to live in four steps",
+        "headline__i18n__de": "In vier Schritten vom Entwurf zur Live-Seite",
+        "subheadline": "What happens between an editor's change in Storyblok and the page you are reading.",
+        "subheadline__i18n__de": "Was zwischen einer Änderung in Storyblok und der Seite passiert, die Sie gerade lesen."
+      },
+      {
+        "_uid": "how-steps",
+        "component": "steps",
+        "headline": "The publishing path",
+        "headline__i18n__de": "Der Weg zur Veröffentlichung",
+        "items": [
+          {
+            "_uid": "how-step-model",
+            "component": "step",
+            "title": "Model",
+            "title__i18n__de": "Modellieren",
+            "text": "Blocks are defined in one JSON file and pushed to the Storyblok space. TypeScript types are generated from the same file.",
+            "text__i18n__de": "Blöcke sind in einer JSON-Datei definiert und werden in den Storyblok-Space übertragen. Die TypeScript-Typen entstehen aus derselben Datei.",
+            "file": "storyblok/components.json"
+          },
+          {
+            "_uid": "how-step-preview",
+            "component": "step",
+            "title": "Preview",
+            "title__i18n__de": "Vorschau",
+            "text": "The Visual Editor opens the preview route, which checks the secret and the draft before it turns on Next.js draft mode.",
+            "text__i18n__de": "Der Visual Editor öffnet die Preview-Route. Sie prüft Secret und Entwurf, bevor sie den Draft Mode von Next.js aktiviert.",
+            "file": "src/app/api/preview/route.ts"
+          },
+          {
+            "_uid": "how-step-publish",
+            "component": "step",
+            "title": "Publish",
+            "title__i18n__de": "Veröffentlichen",
+            "text": "Storyblok calls the revalidate route with the story slug. The route validates the payload and expires that story's cache tag.",
+            "text__i18n__de": "Storyblok ruft die Revalidate-Route mit dem Story-Slug auf. Die Route prüft die Daten und lässt den Cache-Tag dieser Story ablaufen.",
+            "file": "src/app/api/revalidate/route.ts"
+          },
+          {
+            "_uid": "how-step-serve",
+            "component": "step",
+            "title": "Serve",
+            "title__i18n__de": "Ausliefern",
+            "text": "The next request loads the published story from the Storyblok CDN and renders it as a React Server Component.",
+            "text__i18n__de": "Die nächste Anfrage lädt die veröffentlichte Story aus dem Storyblok-CDN und rendert sie als React Server Component.",
+            "file": "src/lib/fetch-story.ts"
+          }
+        ]
+      },
+      {
+        "_uid": "how-cache",
+        "component": "rich_text",
+        "headline": "Why the cache tags matter",
+        "headline__i18n__de": "Warum die Cache-Tags wichtig sind",
+        "body": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Published stories are cached per story. A publish expires one story in every language, so the rest of the site stays cached. Drafts are never cached, so the editor always sees the latest change."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "The full request path is in "
+                },
+                {
+                  "type": "text",
+                  "text": "docs/architecture.md",
+                  "marks": [
+                    {
+                      "type": "link",
+                      "attrs": {
+                        "href": "https://github.com/marcop135/next-storyblok/blob/main/docs/architecture.md",
+                        "linktype": "url",
+                        "target": "_blank"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "."
+                }
+              ]
+            }
+          ]
+        },
+        "body__i18n__de": {
+          "type": "doc",
+          "content": [
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Veröffentlichte Stories werden pro Story gecacht. Ein Publish lässt eine Story in jeder Sprache ablaufen, der Rest der Site bleibt im Cache. Entwürfe werden nie gecacht, deshalb sieht die Redaktion immer die letzte Änderung."
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Den vollständigen Request-Pfad beschreibt "
+                },
+                {
+                  "type": "text",
+                  "text": "docs/architecture.md",
+                  "marks": [
+                    {
+                      "type": "link",
+                      "attrs": {
+                        "href": "https://github.com/marcop135/next-storyblok/blob/main/docs/architecture.md",
+                        "linktype": "url",
+                        "target": "_blank"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "."
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "_uid": "how-cta",
+        "component": "cta_band",
+        "headline": "See what each block looks like",
+        "headline__i18n__de": "Sehen, wie jeder Block aussieht",
+        "text": "The block library renders every component once, labelled with its Storyblok name.",
+        "text__i18n__de": "Die Block-Bibliothek zeigt jede Komponente einmal, beschriftet mit ihrem Storyblok-Namen.",
+        "cta_label": "Open the block library",
+        "cta_label__i18n__de": "Block-Bibliothek öffnen",
+        "cta_href": "/blocks",
+        "cta_href__i18n__de": "/de/blocks"
+      }
+    ]
+  }
+}

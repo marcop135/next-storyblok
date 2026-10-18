@@ -7,6 +7,30 @@
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-10-18
+
+### Added
+
+- Add [How it works](https://nextstory.marcopontili.com/how-it-works) and [Blocks](https://nextstory.marcopontili.com/blocks) pages.
+- Add `steps`, `step`, and `rich_text` blocks, plus a page toggle that labels each section with its block name.
+- Serve German copy on `/de` routes from Storyblok field-level translations, with a language switch.
+- Edit the header navigation and footer note in a global Storyblok `config` story.
+- Keep the content model and seed stories in `storyblok/`, with `npm run storyblok:push` to sync the space.
+- Generate block types from the content model and fail CI when they are stale.
+- Add a dark theme that follows the system setting.
+- Smoke-test every route, link, and the sitemap of the built site in CI.
+- Add a security policy, issue forms, and a pull request template.
+
+### Changed
+
+- Upgrade to Next.js 16: the middleware becomes `src/proxy.ts` and linting runs on the ESLint CLI.
+- Expire story cache tags immediately on publish, so the next request serves the new content.
+- Redesign the README, social preview, and Open Graph images on the shared repo-brand kit.
+- Build the sitemap from the Storyblok Links API instead of a fixed path list.
+- Render offline pages from the same seed stories the space uses.
+- Set `<html lang>` and JSON-LD language per request.
+- Allow the Visual Editor bridge script in the Content-Security-Policy.
+
 ## [0.3.1] - 2026-10-16
 
 ### Fixed

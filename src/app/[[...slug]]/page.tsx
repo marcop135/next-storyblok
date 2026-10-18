@@ -8,7 +8,7 @@ import type { PageBlok } from "@/components/types";
 import { fetchStory } from "@/lib/fetch-story";
 import { hreflangAlternates, storyblokLanguage } from "@/lib/i18n";
 import { OG_IMAGE, SITE_NAME } from "@/lib/site";
-import { parseStorySegments } from "@/lib/story-path";
+import { isPageSlug, parseStorySegments } from "@/lib/story-path";
 
 type PageProps = {
   params: Promise<{ slug?: string[] }>;
@@ -19,7 +19,9 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const { slug: segments } = await params;
   const { locale, slug, pathname } = parseStorySegments(segments);
-  const result = await fetchStory(slug, storyblokLanguage(locale));
+  const result = isPageSlug(slug)
+    ? await fetchStory(slug, storyblokLanguage(locale))
+    : null;
   if (!result) {
     return { title: "Not found" };
   }
@@ -53,6 +55,7 @@ export async function generateMetadata({
 export default async function StoryPage({ params }: PageProps) {
   const { slug: segments } = await params;
   const { locale, slug } = parseStorySegments(segments);
+  if (!isPageSlug(slug)) notFound();
   const result = await fetchStory(slug, storyblokLanguage(locale));
   if (!result) notFound();
 

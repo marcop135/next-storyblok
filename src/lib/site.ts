@@ -17,7 +17,7 @@ export const AUTHOR = {
   email: "marco.pontili@gmail.com",
 };
 
-export const jsonLd = {
+export const jsonLdFor = (inLanguage: string) => ({
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -26,7 +26,7 @@ export const jsonLd = {
       url: `${SITE_URL}/`,
       name: SITE_NAME,
       description: SITE_DESCRIPTION,
-      inLanguage: "en",
+      inLanguage,
       publisher: { "@id": `${SITE_URL}/#author` },
       about: { "@id": `${SITE_URL}/#code` },
     },
@@ -50,4 +50,4 @@ export const jsonLd = {
       sameAs: ["https://github.com/marcop135"],
     },
   ],
-};
+});

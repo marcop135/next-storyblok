@@ -1,65 +1,44 @@
 # Storyblok space schema (Northline)
 
-Recreate this in a free Storyblok Starter space (EU recommended). Match technical names exactly.
+[`storyblok/components.json`](../storyblok/components.json) is the content model and [`storyblok/stories/`](../storyblok/stories/) holds the seed stories. The same files feed the space, the generated TypeScript types, and the offline mock stories.
 
-## Components
+```bash
+npm run storyblok:push -- --dry-run   # list the changes
+npm run storyblok:push                # create or replace components by name, stories by slug, then publish
+npm run storyblok:push -- --draft     # save drafts without publishing
+npm run storyblok:types               # regenerate src/types/storyblok.generated.ts
+```
 
-### `page` (nestable: no)
+`storyblok:push` needs `STORYBLOK_PERSONAL_ACCESS_TOKEN` and `STORYBLOK_SPACE_ID` in `.env`. It writes to the live space.
 
-| Field | Type |
-| --- | --- |
-| `seo_title` | Text |
-| `seo_description` | Textarea |
-| `body` | Blocks (`hero`, `feature_grid`, `cta_band`) |
+## Blocks
 
-### `hero`
-
-| Field | Type |
-| --- | --- |
-| `eyebrow` | Text |
-| `headline` | Text |
-| `subheadline` | Textarea |
-| `cta_label` | Text |
-| `cta_href` | Text |
-
-### `feature_grid`
-
-| Field | Type |
-| --- | --- |
-| `headline` | Text |
-| `features` | Blocks (`feature`) |
-
-### `feature`
-
-| Field | Type |
-| --- | --- |
-| `title` | Text |
-| `text` | Textarea |
-
-### `cta_band`
-
-| Field | Type |
-| --- | --- |
-| `headline` | Text |
-| `text` | Textarea |
-| `cta_label` | Text |
-| `cta_href` | Text |
+| Component | Kind | Renders as |
+| --- | --- | --- |
+| `page` | content type | Page body; `show_block_labels` labels each section with its component name |
+| `hero` | nestable | Headline, lead, primary and secondary link |
+| `feature_grid` / `feature` | nestable | Card grid; a feature with `link_href` becomes a link |
+| `steps` / `step` | nestable | Numbered list; `file` links the step to a path in this repository |
+| `rich_text` | nestable | Storyblok rich text rendered on the server |
+| `cta_band` | nestable | Full-width call to action |
+| `config` / `nav_link` | content type | Global story `config`: header navigation and footer note; never served as a page |
 
 ## Stories
 
-| Name | Slug | Root |
-| --- | --- | --- |
-| Home | `home` | `page` |
-| Pricing | `pricing` | `page` |
+| Slug | Content type |
+| --- | --- |
+| `home` | `page` |
+| `how-it-works` | `page` |
+| `blocks` | `page` |
+| `pricing` | `page` |
+| `config` | `config` |
 
-Seed body content from the mock stories in `src/lib/mock-story.ts`.
+## Languages
 
-## Preview & webhook
+The space has `de` enabled under Settings → Internationalization. Every text field is `translatable`, so German lives in the same story as `field__i18n__de`. Link fields are translatable too, so German links point at `/de/...` routes. The app sends `language=de` for the `/de` prefix; an empty translation falls back to English.
+
+## Preview and webhook
 
 1. Visual Editor default environment: `https://nextstory.marcopontili.com/` (local: `https://localhost:3000/`). Home real path: `/`.
-2. Preview entry: `https://nextstory.marcopontili.com/api/preview?secret=<STORYBLOK_PREVIEW_SECRET>&slug=home&lang=en`. The route verifies the draft before enabling preview; use `lang=de` for German.
+2. Preview entry: `https://nextstory.marcopontili.com/api/preview?secret=<STORYBLOK_PREVIEW_SECRET>&slug=home&lang=en`. The route verifies the draft before enabling preview; use `lang=de` for German. Previewing `config` opens the home page.
 3. Webhook: `POST https://nextstory.marcopontili.com/api/revalidate?secret=<STORYBLOK_REVALIDATE_SECRET>`. Subscribe to story published, unpublished, deleted, and moved events. Include `old_full_slug` on moves to expire both routes. See the [Storyblok webhook payloads](https://www.storyblok.com/docs/concepts/webhooks) and [Next.js 15 cache tags](https://nextjs.org/docs/15/app/api-reference/functions/revalidateTag).
-
-## Languages (stub)
-
-Enable `de` in space languages when ready. Routes: `/` (en), `/de`, `/pricing`, `/de/pricing`. The app sends Storyblok `language=de` for the `de` prefix.

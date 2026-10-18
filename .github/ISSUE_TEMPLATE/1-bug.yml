@@ -1,0 +1,37 @@
+name: Bug report
+description: The demo or its tooling does not work as documented
+title: "[bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened
+      description: What you expected, and what you got instead.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Rendering a page or block
+        - Draft preview or Visual Editor
+        - Publish webhook and cache refresh
+        - German routes and translations
+        - Scripts (storyblok:push, storyblok:types, smoke, brand)
+        - Not sure
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Include the URL or route, and whether a Storyblok token was set (`source:` badge on the page).
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+      placeholder: v0.4.0 or a commit SHA

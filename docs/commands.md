@@ -9,11 +9,19 @@ npm test                # offline CMS delivery, server rendering, preview, and w
 npm run changelog:lint
 npm run build
 npm start              # after build
+npm run smoke          # route, language, link, and sitemap checks against a running build
 ```
 
 ## Storyblok
 
-Recreate the space schema from [storyblok-schema.md](storyblok-schema.md).
+Push the content model and seed stories, and regenerate types, as described in [storyblok-schema.md](storyblok-schema.md):
+
+```bash
+npm run storyblok:push -- --dry-run
+npm run storyblok:push
+npm run storyblok:types        # after editing storyblok/components.json
+npm run storyblok:types:check  # CI: fails when the generated types are stale
+```
 
 Preview (draftMode):
 
@@ -38,5 +46,8 @@ Example body: `{"action":"published","story_id":123,"full_slug":"pricing"}`. A s
 ## Brand images
 
 ```bash
-npm run brand:render
+npx -y -p playwright@1.61.1 -p sharp@0.35.4 node .github/brand/render.mjs          # write
+npx -y -p playwright@1.61.1 -p sharp@0.35.4 node .github/brand/render.mjs --check  # verify
 ```
+
+Sources and kit notes: [.github/brand/README.md](../.github/brand/README.md).

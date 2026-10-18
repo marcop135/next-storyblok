@@ -5,6 +5,9 @@ import { CONFIG_SLUG, normalizeStorySlug, publicPathForSlug } from "@/lib/story-
 import { locales } from "@/lib/i18n";
 import { storyblokCacheTag, storyCacheTag } from "@/lib/story-cache";
 
+// Expire immediately: a publish must show on the next request, not after a stale serve.
+const expireNow = { expire: 0 };
+
 const contentActions = new Set(["published", "unpublished", "deleted", "moved"]);
 
 function invalidPayload() {
@@ -53,14 +56,14 @@ export async function POST(request: NextRequest) {
 
   // Legacy ID-only events and moves without an old path must also expire old URLs.
   if (!slugs.size || (body.action === "moved" && body.old_full_slug === undefined)) {
-    revalidateTag(storyblokCacheTag);
+    revalidateTag(storyblokCacheTag, expireNow);
     revalidatePath("/", "layout");
     return Response.json({ ok: true, revalidated: ["/"], scope: "all-stories" });
   }
 
   const paths = new Set<string>();
   for (const slug of slugs) {
-    revalidateTag(storyCacheTag(slug));
+    revalidateTag(storyCacheTag(slug), expireNow);
     for (const locale of locales) paths.add(publicPathForSlug(slug, locale));
   }
   for (const path of paths) revalidatePath(path);

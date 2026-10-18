@@ -31,7 +31,7 @@ Next.js App Router marketing site driven by **Storyblok** blocks. Editors own co
 | Draft preview checks the secret and the draft first | [`src/app/api/preview/route.ts`](src/app/api/preview/route.ts) |
 | Publish, unpublish, delete, and move webhooks expire story tags in every language | [`src/app/api/revalidate/route.ts`](src/app/api/revalidate/route.ts) |
 | Navigation and footer edited in a global `config` story | [`src/lib/site-config.ts`](src/lib/site-config.ts), [`src/app/layout.tsx`](src/app/layout.tsx) |
-| German routes, `hreflang`, and `<html lang>` per request | [`src/lib/i18n.ts`](src/lib/i18n.ts), [`src/middleware.ts`](src/middleware.ts) |
+| German routes, `hreflang`, and `<html lang>` per request | [`src/lib/i18n.ts`](src/lib/i18n.ts), [`src/proxy.ts`](src/proxy.ts) |
 | Sitemap built from the Storyblok Links API | [`src/lib/published-slugs.ts`](src/lib/published-slugs.ts) |
 | Offline development from the same seed stories | [`src/lib/mock-story.ts`](src/lib/mock-story.ts), [`src/lib/localize.ts`](src/lib/localize.ts) |
 
@@ -51,10 +51,10 @@ Open http://localhost:3000. Without a token, the seed stories in `storyblok/stor
 
 ## Stack
 
-- Next.js 15 App Router (RSC) + React 19
+- Next.js 16 App Router (RSC) + React 19
 - `@storyblok/react` v7
 - Vercel production hosting
-- Cookieless self-hosted Matomo; AI-assistant fetches reported from middleware ([privacy](https://nextstory.marcopontili.com/privacy))
+- Cookieless self-hosted Matomo; AI-assistant fetches reported from the proxy ([privacy](https://nextstory.marcopontili.com/privacy))
 - Hand-written CSS with light and dark themes + `next/font`
 
 ## Contributing and security

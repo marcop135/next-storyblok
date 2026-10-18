@@ -12,7 +12,7 @@ import { LOCALE_HEADER, localeForPathname } from "@/lib/i18n";
  * Matomo. Runs before the Vercel cache, so cached pages count too. Never
  * blocks or alters the response.
  */
-export function middleware(request: NextRequest, event: NextFetchEvent) {
+export function proxy(request: NextRequest, event: NextFetchEvent) {
   const ua = request.headers.get("user-agent") ?? "";
   if (uaIsAiAssistant(ua) && !shouldSkipPath(request.nextUrl.pathname)) {
     event.waitUntil(

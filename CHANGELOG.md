@@ -21,6 +21,8 @@
 
 ### Changed
 
+- Upgrade to Next.js 16: the middleware becomes `src/proxy.ts` and linting runs on the ESLint CLI.
+- Expire story cache tags immediately on publish, so the next request serves the new content.
 - Redesign the README, social preview, and Open Graph images on the shared repo-brand kit.
 - Build the sitemap from the Storyblok Links API instead of a fixed path list.
 - Render offline pages from the same seed stories the space uses.

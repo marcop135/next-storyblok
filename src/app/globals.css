@@ -96,9 +96,99 @@ a {
   gap: 0.5rem 1.25rem;
 }
 
+.menu-toggle {
+  display: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 @media (max-width: 40rem) {
+  .menu-toggle {
+    display: inline-grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-right: -0.5rem;
+    padding: 0;
+    border: 0;
+    border-radius: 0.35rem;
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  .menu-toggle__icon,
+  .menu-toggle__icon::before,
+  .menu-toggle__icon::after {
+    display: block;
+    width: 1.375rem;
+    height: 2px;
+    border-radius: 1px;
+    background: currentColor;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+
+  .menu-toggle__icon {
+    position: relative;
+  }
+
+  .menu-toggle__icon::before,
+  .menu-toggle__icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+  }
+
+  .menu-toggle__icon::before {
+    transform: translateY(-0.4375rem);
+  }
+
+  .menu-toggle__icon::after {
+    transform: translateY(0.4375rem);
+  }
+
+  .menu-toggle[aria-expanded="true"] .menu-toggle__icon {
+    background-color: transparent;
+  }
+
+  .menu-toggle[aria-expanded="true"] .menu-toggle__icon::before {
+    transform: rotate(45deg);
+  }
+
+  .menu-toggle[aria-expanded="true"] .menu-toggle__icon::after {
+    transform: rotate(-45deg);
+  }
+
   .nav {
-    justify-content: flex-start;
+    display: none;
+    flex-basis: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .nav[data-open="true"] {
+    display: flex;
+  }
+
+  .nav > a {
+    width: 100%;
+    padding-block: 0.75rem;
+  }
+
+  .nav .lang-switch {
+    margin-top: 0.5rem;
+    padding: 0.5rem 0 0.25rem;
+    border-left: 0;
   }
 }
 

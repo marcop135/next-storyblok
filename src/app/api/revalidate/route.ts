@@ -67,6 +67,8 @@ export async function POST(request: NextRequest) {
     for (const locale of locales) paths.add(publicPathForSlug(slug, locale));
   }
   for (const path of paths) revalidatePath(path);
+  // A new, removed, or moved story changes the published page list.
+  revalidatePath("/sitemap.xml");
   // The config story feeds the shared header and footer on every route.
   if (slugs.has(CONFIG_SLUG)) revalidatePath("/", "layout");
 

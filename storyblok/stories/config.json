@@ -30,7 +30,7 @@
         "href__i18n__de": "/de/pricing"
       }
     ],
-    "footer_note": "Northline demo · Next.js App Router · Storyblok",
-    "footer_note__i18n__de": "Northline-Demo · Next.js App Router · Storyblok"
+    "footer_note": "Next Story demo · Next.js App Router · Storyblok",
+    "footer_note__i18n__de": "Next-Story-Demo · Next.js App Router · Storyblok"
   }
 }

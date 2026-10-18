@@ -6,11 +6,12 @@ const matomo = "https://mt.marcopontili.com";
 /**
  * App Router streams inline RSC payload scripts, so script-src keeps
  * 'unsafe-inline'. 'unsafe-eval' and the HMR socket are dev-only.
- * frame-ancestors lets the Storyblok Visual Editor embed preview pages.
+ * frame-ancestors lets the Storyblok Visual Editor embed preview pages, and
+ * script-src admits its bridge script, which preview pages load from app.storyblok.com.
  */
 const csp = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline' ${matomo}${isDev ? " 'unsafe-eval'" : ""}`,
+  `script-src 'self' 'unsafe-inline' ${matomo} https://app.storyblok.com${isDev ? " 'unsafe-eval'" : ""}`,
   "style-src 'self' 'unsafe-inline'",
   `img-src 'self' data: blob: https://a.storyblok.com ${matomo}`,
   "font-src 'self'",

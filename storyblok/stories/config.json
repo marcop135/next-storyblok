@@ -1,0 +1,36 @@
+{
+  "name": "Config",
+  "slug": "config",
+  "content": {
+    "_uid": "config",
+    "component": "config",
+    "header_nav": [
+      {
+        "_uid": "nav-how",
+        "component": "nav_link",
+        "label": "How it works",
+        "label__i18n__de": "So funktioniert es",
+        "href": "/how-it-works",
+        "href__i18n__de": "/de/how-it-works"
+      },
+      {
+        "_uid": "nav-blocks",
+        "component": "nav_link",
+        "label": "Blocks",
+        "label__i18n__de": "Blöcke",
+        "href": "/blocks",
+        "href__i18n__de": "/de/blocks"
+      },
+      {
+        "_uid": "nav-pricing",
+        "component": "nav_link",
+        "label": "Pricing",
+        "label__i18n__de": "Preise",
+        "href": "/pricing",
+        "href__i18n__de": "/de/pricing"
+      }
+    ],
+    "footer_note": "Northline demo · Next.js App Router · Storyblok",
+    "footer_note__i18n__de": "Northline-Demo · Next.js App Router · Storyblok"
+  }
+}

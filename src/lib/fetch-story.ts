@@ -18,7 +18,7 @@ async function resolveVersion(): Promise<"draft" | "published"> {
   return process.env.STORYBLOK_VERSION === "published" ? "published" : "draft";
 }
 
-function cdnBaseUrl(): string {
+export function cdnBaseUrl(): string {
   const region = (process.env.STORYBLOK_REGION || "eu").trim();
   // EU host is api.storyblok.com (not api-eu).
   const host =
@@ -35,7 +35,7 @@ export async function fetchStory(
   if (!path) return null;
 
   if (!hasStoryblokToken()) {
-    const mock = mockStoryForSlug(path);
+    const mock = mockStoryForSlug(path, language);
     return mock ? { story: mock, source: "mock" } : null;
   }
 

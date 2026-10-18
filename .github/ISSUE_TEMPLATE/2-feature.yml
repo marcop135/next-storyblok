@@ -1,0 +1,17 @@
+name: Feature request
+description: Suggest a block, a workflow, or a doc improvement
+title: "[feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What should the demo show
+      description: The Next.js or Storyblok workflow it would prove, and who it helps.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: New blocks belong in `storyblok/components.json` first; describe the fields.

@@ -55,7 +55,7 @@ it.each(["published", "unpublished", "deleted"])("invalidates all language varia
   expect(revalidatePath).toHaveBeenCalledWith("/pricing");
   expect(revalidatePath).toHaveBeenCalledWith("/de/pricing");
   expect(revalidateTag).toHaveBeenCalledOnce();
-  expect(revalidateTag).not.toHaveBeenCalledWith("storyblok");
+  expect(revalidateTag).not.toHaveBeenCalledWith("storyblok", expect.anything());
 });
 
 it("expires the old and new paths when an editor moves a story", async () => {
@@ -68,13 +68,13 @@ it("expires the old and new paths when an editor moves a story", async () => {
 it("supports legacy story-id-only publish events with a collection invalidation", async () => {
   const response = await POST(request({ action: "published", story_id: 123 }));
   expect(response.status).toBe(200);
-  expect(revalidateTag).toHaveBeenCalledWith("storyblok");
+  expect(revalidateTag).toHaveBeenCalledWith("storyblok", { expire: 0 });
   expect(revalidatePath).toHaveBeenCalledWith("/", "layout");
 });
 
 it("expires the collection when a move omits the old path", async () => {
   expect((await POST(request({ action: "moved", full_slug: "plans", story_id: 123 }))).status).toBe(200);
-  expect(revalidateTag).toHaveBeenCalledWith("storyblok");
+  expect(revalidateTag).toHaveBeenCalledWith("storyblok", { expire: 0 });
   expect(revalidatePath).toHaveBeenCalledWith("/", "layout");
 });
 
@@ -84,4 +84,11 @@ it("acknowledges unrelated events without invalidating published pages", async (
   expect(await response.json()).toMatchObject({ ignored: true });
   expect(revalidateTag).not.toHaveBeenCalled();
   expect(revalidatePath).not.toHaveBeenCalled();
+});
+
+it("refreshes the shared layout when the config story is published", async () => {
+  const response = await POST(request({ action: "published", story_id: 7, full_slug: "config" }));
+  expect(response.status).toBe(200);
+  expect(revalidatePath).toHaveBeenCalledWith("/", "layout");
+  expect(revalidateTag).toHaveBeenCalledOnce();
 });

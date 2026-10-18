@@ -4,6 +4,7 @@ import Link from "next/link";
 import Script from "next/script";
 import type { ReactNode } from "react";
 
+import LanguageSwitch from "@/components/LanguageSwitch";
 import MatomoRouteTracker from "@/components/MatomoRouteTracker";
 import StoryblokProvider from "@/components/StoryblokProvider";
 import {
@@ -12,8 +13,9 @@ import {
   SITE_DESCRIPTION,
   SITE_NAME,
   SITE_URL,
-  jsonLd,
+  jsonLdFor,
 } from "@/lib/site";
+import { fetchSiteConfig, requestLocale } from "@/lib/site-config";
 
 import "./globals.css";
 
@@ -57,31 +59,45 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image" },
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+const fallbackNav = [
+  { _uid: "nav-how", label: "How it works", href: "/how-it-works" },
+  { _uid: "nav-blocks", label: "Blocks", href: "/blocks" },
+  { _uid: "nav-pricing", label: "Pricing", href: "/pricing" },
+];
+
+export default async function RootLayout({ children }: { children: ReactNode }) {
+  const locale = await requestLocale();
+  const config = await fetchSiteConfig(locale);
+  const nav = config?.header_nav?.length ? config.header_nav : fallbackNav;
+  const home = locale === "en" ? "/" : `/${locale}`;
   return (
     <StoryblokProvider>
-      <html lang="en" data-scroll-behavior="smooth" className={`${display.variable} ${sans.variable}`}>
+      <html lang={locale} data-scroll-behavior="smooth" className={`${display.variable} ${sans.variable}`}>
         <body>
           <a className="skip-link" href="#main">
-            Skip to content
+            {locale === "de" ? "Zum Inhalt springen" : "Skip to content"}
           </a>
           <header className="site-header">
             <div className="wrap">
-              <Link className="brand" href="/">
+              <Link className="brand" href={home}>
                 Northline
               </Link>
-              <nav className="nav" aria-label="Primary">
-                <Link href="/">Home</Link>
-                <Link href="/pricing">Pricing</Link>
+              <nav className="nav" aria-label={locale === "de" ? "Hauptnavigation" : "Primary"}>
+                {nav.map((link) => (
+                  <Link key={link._uid} href={link.href}>
+                    {link.label}
+                  </Link>
+                ))}
+                <LanguageSwitch current={locale} />
               </nav>
             </div>
           </header>
           {children}
           <footer className="site-footer">
             <div className="wrap">
-              <p>Northline demo · Next.js App Router · Storyblok</p>
+              <p>{config?.footer_note || "Northline demo · Next.js App Router · Storyblok"}</p>
               <nav className="footer-nav" aria-label="Footer">
-                <a href={REPO_URL}>Source on GitHub</a>
+                <a href={REPO_URL}>{locale === "de" ? "Quellcode auf GitHub" : "Source on GitHub"}</a>
                 <Link href="/privacy">Privacy</Link>
                 <a href="/llms.txt">llms.txt</a>
               </nav>
@@ -89,7 +105,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           </footer>
           <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFor(locale)) }}
           />
           <Script src="/matomo.js" strategy="afterInteractive" />
           <MatomoRouteTracker />

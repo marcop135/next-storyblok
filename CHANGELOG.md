@@ -7,6 +7,17 @@
 
 ## [Unreleased]
 
+## [0.4.2] - 2026-10-18
+
+### Changed
+
+- Simplify the social preview and Open Graph images so they stay readable as small link previews.
+- Simplify the README header images.
+
+### Fixed
+
+- Keep German navigation, footer, and page language after client-side navigation from `/de`.
+
 ## [0.4.1] - 2026-10-18
 
 ### Fixed

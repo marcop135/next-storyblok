@@ -7,6 +7,10 @@
 
 ## [Unreleased]
 
+### Fixed
+
+- Refresh the sitemap when a story is published, unpublished, deleted, or moved.
+
 ## [0.4.0] - 2026-10-18
 
 ### Added

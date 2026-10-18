@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 import LanguageSwitch from "@/components/LanguageSwitch";
 import { defaultLocale, localeForPathname, type Locale } from "@/lib/i18n";
-import { REPO_URL } from "@/lib/site";
+import { AUTHOR } from "@/lib/site";
 
 export type ChromeCopy = {
   nav: { _uid: string; label: string; href: string }[];
@@ -58,10 +58,16 @@ export function SiteFooter({ copy }: { copy: Record<Locale, ChromeCopy> }) {
   return (
     <footer className="site-footer">
       <div className="wrap">
-        <p>{copy[locale].footerNote}</p>
+        <div>
+          <p>{copy[locale].footerNote}</p>
+          <p>
+            {locale === "de" ? "Entwickelt und gepflegt von" : "Built and maintained by"}{" "}
+            <a href={AUTHOR.url}>{AUTHOR.name}</a>
+          </p>
+        </div>
         <nav className="footer-nav" aria-label="Footer">
-          <a href={REPO_URL}>{locale === "de" ? "Quellcode auf GitHub" : "Source on GitHub"}</a>
           <Link href="/privacy">Privacy</Link>
+          <Link href="/for-agents">For agents</Link>
           <a href="/llms.txt">llms.txt</a>
         </nav>
       </div>

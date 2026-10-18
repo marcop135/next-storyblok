@@ -16,6 +16,7 @@ const pages = [
   ["/de/blocks", "de", "Jeder Block dieser Site"],
   ["/de/pricing", "de", "Ein Content-Modell. Jede Sprache."],
   ["/privacy", "en", "Privacy"],
+  ["/for-agents", "en", "For agents"],
 ];
 
 const failures = [];

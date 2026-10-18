@@ -33,7 +33,7 @@ const sans = Source_Sans_3({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "next-storyblok: Next.js and Storyblok marketing demo",
+    default: "Next Story: Next.js and Storyblok marketing demo",
     template: "%s · Northline",
   },
   description: SITE_DESCRIPTION,
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     type: "website",
     siteName: SITE_NAME,
     locale: "en_US",
-    title: "next-storyblok: Next.js and Storyblok marketing demo",
+    title: "Next Story: Next.js and Storyblok marketing demo",
     description: SITE_DESCRIPTION,
     url: "/",
     images: [OG_IMAGE],

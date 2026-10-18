@@ -21,6 +21,7 @@ describe("locale routing", () => {
     ["/de", "en", "/"],
     ["/de/how-it-works", "en", "/how-it-works"],
     ["/privacy", "de", "/de"],
+    ["/for-agents", "de", "/de"],
   ] as const)("switches %s to %s as %s", (path, locale, expected) => {
     expect(switchLocalePath(path, locale)).toBe(expected);
   });

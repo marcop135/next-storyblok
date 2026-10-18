@@ -29,5 +29,6 @@ it("switches the header and footer back to English on English routes", () => {
   const footer = renderToStaticMarkup(createElement(SiteFooter, { copy }));
   expect(header).toContain('href="/pricing"');
   expect(footer).toContain("Northline demo");
-  expect(footer).toContain("Source on GitHub");
+  expect(footer).toContain("Built and maintained by");
+  expect(footer).toContain(">Marco Pontili<");
 });

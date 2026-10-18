@@ -1,6 +1,6 @@
 export const SITE_URL = "https://nextstory.marcopontili.com";
-export const SITE_NAME = "nextstory";
-export const REPO_URL = "https://github.com/marcop135/next-storyblok";
+export const SITE_NAME = "Next Story";
+export const REPO_URL = "https://github.com/marcop135/next-story";
 export const SITE_DESCRIPTION =
   "Next.js App Router marketing site driven by Storyblok blocks: draft preview, publish webhooks, and localized cache refresh.";
 
@@ -8,7 +8,7 @@ export const OG_IMAGE = {
   url: "/og.png",
   width: 1200,
   height: 630,
-  alt: "next-storyblok: Next.js App Router and Storyblok marketing-site demo",
+  alt: "Next Story: Next.js App Router and Storyblok marketing-site demo",
 };
 
 export const AUTHOR = {
@@ -33,7 +33,7 @@ export const jsonLdFor = (inLanguage: string) => ({
     {
       "@type": "SoftwareSourceCode",
       "@id": `${SITE_URL}/#code`,
-      name: "next-storyblok",
+      name: "Next Story",
       description: SITE_DESCRIPTION,
       url: `${SITE_URL}/`,
       codeRepository: REPO_URL,

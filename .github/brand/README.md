@@ -8,9 +8,9 @@
 `brand.config.json`. Render with
 `npx -y -p playwright@1.61.1 -p sharp@0.35.4 node .github/brand/render.mjs`
 from the repository root; add `--check` to re-render in memory and exit 1 if
-any source or output is stale. Palette tokens live in `tokens.json` (`light`
-and `dark`); the teal outline marks the block selected in the Storyblok Visual
-Editor. The fonts are Catamaran, Cabin and Roboto Mono under the SIL OFL 1.1
-(texts in `fonts/`), vendored with `render.mjs`, `embed-fonts.mjs` and
-`tokens.json` from the marcopontili.com repo-brand kit; do not edit kit files
-here.
+any source or output is stale. Palette tokens in `tokens.json` (`light` and
+`dark`) follow the demo site palette in `src/app/globals.css`; the teal outline
+marks the block selected in the Storyblok Visual Editor. Fraunces and Source
+Sans 3 are the site's `next/font` faces, Roboto Mono sets block names, all
+under the SIL OFL 1.1 (texts in `fonts/`). `render.mjs` and `embed-fonts.mjs`
+are vendored from the marcopontili.com repo-brand kit; do not edit them here.

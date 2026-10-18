@@ -1,6 +1,6 @@
 # Architecture
 
-Northline is a fictional B2B marketing site. The **repo and host** advertise the stack (`next-storyblok`); Storyblok owns page content.
+Northline is a fictional B2B marketing site. The **repo and host** advertise the stack (`next-story`, Next.js + Storyblok); Storyblok owns page content.
 
 ```mermaid
 flowchart LR

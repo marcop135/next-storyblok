@@ -9,14 +9,21 @@ export default function ImageText({ blok }: { blok: ImageTextBlok }) {
     <section className="image-text" {...storyblokEditable(blok)}>
       <div className={`wrap image-text__layout${blok.image_right ? " image-text__layout--reversed" : ""}${imageSrc ? "" : " image-text__layout--text-only"}`}>
         {imageSrc ? (
-          <div className="image-text__media">
-            <Image
-              src={imageSrc}
-              alt={blok.image_alt ?? blok.image?.alt ?? ""}
-              fill
-              sizes="(min-width: 68rem) 520px, (min-width: 48rem) 50vw, 100vw"
-            />
-          </div>
+          <figure className="image-text__figure">
+            <div className="image-text__media">
+              <Image
+                src={imageSrc}
+                alt={blok.image_alt ?? blok.image?.alt ?? ""}
+                fill
+                sizes="(min-width: 68rem) 520px, (min-width: 48rem) 50vw, 100vw"
+              />
+            </div>
+            {blok.image?.copyright && blok.image.source ? (
+              <figcaption className="image-credit">
+                <a href={blok.image.source}>{blok.image.copyright}</a>
+              </figcaption>
+            ) : null}
+          </figure>
         ) : null}
         <div className="image-text__copy">
           <h2>{blok.headline}</h2>

@@ -21,6 +21,12 @@ it("renders CMS blocks on the server without a client provider or delivery token
   expect(html).toContain("<h1>Ship every market from one content model</h1>");
   expect(html).toContain("Editors own the page");
   expect(html).toContain("Read the code behind this page");
+  expect(html).toContain('class="wrap hero__layout"');
+  expect(html).toContain('href="https://unsplash.com/photos/white-imac-on-brown-wooden-desk-o8Au1Bt85HQ"');
+  expect(html).toContain("Domenico Loia / Unsplash");
+  expect(html).toContain('href="https://unsplash.com/photos/watercolor-wireframe-sketches-of-website-layouts-tZc3vjPCk-Q"');
+  expect(html).toContain("Hal Gatewood / Unsplash");
+  expect(html).not.toContain("next-story-blocks.png");
 });
 
 it.each(mockPageSlugs)("renders the %s seed story in both languages", (slug) => {
@@ -59,6 +65,8 @@ it("renders new block content, image alternatives, and native accordion controls
 it("serves German copy and German links from field-level translations", () => {
   const html = render("home", "de");
   expect(html).toContain("Jeden Markt aus einem Content-Modell bedienen");
+  expect(html).toContain('alt="Desktop-Computer und Laptop an einem hellen Design-Arbeitsplatz"');
+  expect(html).toContain('alt="Aquarellierte Website-Skizzen mit wiederverwendbaren Seitenabschnitten"');
   expect(html).toContain('href="/de/how-it-works"');
 });
 

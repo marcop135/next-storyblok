@@ -7,6 +7,17 @@
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-10-19
+
+### Added
+
+- Add an editable home hero image with linked photographer credits.
+
+### Changed
+
+- Replace the home block graphic with credited Unsplash website wireframes.
+- Clarify the README stack and remove its badges.
+
 ## [0.6.0] - 2026-10-19
 
 ### Added

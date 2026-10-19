@@ -78,6 +78,18 @@
         "type": "text",
         "translatable": true,
         "pos": 6
+      },
+      "image": {
+        "type": "asset",
+        "filetypes": [
+          "images"
+        ],
+        "pos": 7
+      },
+      "image_alt": {
+        "type": "text",
+        "translatable": true,
+        "pos": 8
       }
     }
   },

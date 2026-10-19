@@ -20,6 +20,9 @@ npm run storyblok:types               # regenerate src/types/storyblok.generated
 | `feature_grid` / `feature` | nestable | Card grid; a feature with `link_href` becomes a link |
 | `steps` / `step` | nestable | Numbered list; `file` links the step to a path in this repository |
 | `rich_text` | nestable | Storyblok rich text rendered on the server |
+| `image_text` | nestable | Image asset with translated alt text, copy, optional link, and reversible desktop layout |
+| `accordion` / `accordion_item` | nestable | Native expandable sections with rich text; keyboard-operable without client JavaScript |
+| `pull_quote` | nestable | Quotation with optional attribution |
 | `cta_band` | nestable | Full-width call to action |
 | `config` / `nav_link` | content type | Global story `config`: header navigation and footer note; never served as a page |
 

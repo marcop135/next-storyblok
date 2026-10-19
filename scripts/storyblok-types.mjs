@@ -24,6 +24,8 @@ function fieldType(field) {
       return "boolean";
     case "richtext":
       return "StoryblokRichTextInput";
+    case "asset":
+      return "{ filename: string; alt?: string | null }";
     case "bloks": {
       const allowed = field.component_whitelist ?? [];
       if (allowed.length === 0) return "SbBlokData[]";

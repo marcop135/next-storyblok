@@ -7,6 +7,13 @@
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-10-19
+
+### Added
+
+- Add image-and-text, accordion, and pull-quote blocks with English and German examples in the block library.
+- Introduce the block library on the home page with an editable image-and-text section.
+
 ## [0.5.0] - 2026-10-18
 
 ### Added

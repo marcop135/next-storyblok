@@ -28,7 +28,10 @@
           "feature_grid",
           "steps",
           "rich_text",
-          "cta_band"
+          "cta_band",
+          "image_text",
+          "accordion",
+          "pull_quote"
         ],
         "pos": 3
       }
@@ -258,6 +261,112 @@
         "type": "text",
         "translatable": true,
         "required": true,
+        "pos": 1
+      }
+    }
+  },
+  {
+    "name": "image_text",
+    "display_name": "Image and text",
+    "is_root": false,
+    "is_nestable": true,
+    "schema": {
+      "headline": {
+        "type": "text",
+        "translatable": true,
+        "required": true,
+        "pos": 0
+      },
+      "text": {
+        "type": "textarea",
+        "translatable": true,
+        "pos": 1
+      },
+      "image": {
+        "type": "asset",
+        "filetypes": [
+          "images"
+        ],
+        "pos": 2
+      },
+      "image_alt": {
+        "type": "text",
+        "translatable": true,
+        "pos": 3,
+        "description": "Describe the image in the page language; leave empty for decorative images."
+      },
+      "image_right": {
+        "type": "boolean",
+        "description": "Place the image on the right on wide screens; mobile always shows the image first.",
+        "pos": 4
+      },
+      "link_label": {
+        "type": "text",
+        "translatable": true,
+        "pos": 5
+      },
+      "link_href": {
+        "type": "text",
+        "translatable": true,
+        "pos": 6
+      }
+    }
+  },
+  {
+    "name": "accordion",
+    "display_name": "Accordion",
+    "is_root": false,
+    "is_nestable": true,
+    "schema": {
+      "headline": {
+        "type": "text",
+        "translatable": true,
+        "pos": 0
+      },
+      "items": {
+        "type": "bloks",
+        "restrict_components": true,
+        "component_whitelist": [
+          "accordion_item"
+        ],
+        "pos": 1
+      }
+    }
+  },
+  {
+    "name": "accordion_item",
+    "display_name": "Accordion item",
+    "is_root": false,
+    "is_nestable": true,
+    "schema": {
+      "title": {
+        "type": "text",
+        "translatable": true,
+        "required": true,
+        "pos": 0
+      },
+      "body": {
+        "type": "richtext",
+        "translatable": true,
+        "pos": 1
+      }
+    }
+  },
+  {
+    "name": "pull_quote",
+    "display_name": "Pull quote",
+    "is_root": false,
+    "is_nestable": true,
+    "schema": {
+      "quote": {
+        "type": "textarea",
+        "translatable": true,
+        "required": true,
+        "pos": 0
+      },
+      "attribution": {
+        "type": "text",
+        "translatable": true,
         "pos": 1
       }
     }

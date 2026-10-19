@@ -6,7 +6,7 @@ export type PageBlok = SbBlokData & {
   seo_title?: string;
   seo_description?: string;
   show_block_labels?: boolean;
-  body?: (HeroBlok | FeatureGridBlok | StepsBlok | RichTextBlok | CtaBandBlok)[];
+  body?: (HeroBlok | FeatureGridBlok | StepsBlok | RichTextBlok | CtaBandBlok | ImageTextBlok | AccordionBlok | PullQuoteBlok)[];
 };
 
 export type HeroBlok = SbBlokData & {
@@ -73,6 +73,35 @@ export type NavLinkBlok = SbBlokData & {
   href: string;
 };
 
+export type ImageTextBlok = SbBlokData & {
+  component: "image_text";
+  headline: string;
+  text?: string;
+  image?: { filename: string; alt?: string | null };
+  image_alt?: string;
+  image_right?: boolean;
+  link_label?: string;
+  link_href?: string;
+};
+
+export type AccordionBlok = SbBlokData & {
+  component: "accordion";
+  headline?: string;
+  items?: AccordionItemBlok[];
+};
+
+export type AccordionItemBlok = SbBlokData & {
+  component: "accordion_item";
+  title: string;
+  body?: StoryblokRichTextInput;
+};
+
+export type PullQuoteBlok = SbBlokData & {
+  component: "pull_quote";
+  quote: string;
+  attribution?: string;
+};
+
 export type StoryblokComponentName =
   | "page"
   | "hero"
@@ -83,4 +112,8 @@ export type StoryblokComponentName =
   | "rich_text"
   | "cta_band"
   | "config"
-  | "nav_link";
+  | "nav_link"
+  | "image_text"
+  | "accordion"
+  | "accordion_item"
+  | "pull_quote";

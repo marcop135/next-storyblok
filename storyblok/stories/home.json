@@ -29,6 +29,33 @@
         "secondary_href__i18n__de": "/de/blocks"
       },
       {
+        "_uid": "home-image-text",
+        "component": "image_text",
+        "headline": "Explore the page, then its building blocks",
+        "headline__i18n__de": "Die Seite entdecken, ihre Bausteine kennenlernen",
+        "text": "This project grows one block at a time. The block library shows each section on its own, so you can see how the pages fit together.",
+        "text__i18n__de": "Dieses Projekt wächst Block für Block. Die Block-Bibliothek zeigt jeden Abschnitt einzeln. So wird sichtbar, wie sich die Seiten zusammensetzen.",
+        "image": {
+          "id": 232291880480383,
+          "alt": "",
+          "name": "",
+          "focus": "",
+          "title": "",
+          "source": "",
+          "filename": "https://a.storyblok.com/f/295862282921450/1200x630/522882581d/next-story-blocks.png",
+          "copyright": "",
+          "fieldtype": "asset",
+          "meta_data": {}
+        },
+        "image_alt": "Next Story: editors own the content, developers own the components. A diagram shows hero, feature grid, and call to action blocks.",
+        "image_alt__i18n__de": "Next Story: Die Redaktion verwaltet die Inhalte, die Entwicklung die Komponenten. Eine Grafik zeigt Hero, Feature-Raster und Call-to-Action als Blöcke.",
+        "image_right": true,
+        "link_label": "Explore the blocks",
+        "link_label__i18n__de": "Blöcke entdecken",
+        "link_href": "/blocks",
+        "link_href__i18n__de": "/de/blocks"
+      },
+      {
         "_uid": "home-proof",
         "component": "feature_grid",
         "headline": "What this demo proves",

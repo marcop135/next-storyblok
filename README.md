@@ -16,7 +16,7 @@ Next.js App Router marketing site driven by **Storyblok** blocks. Editors own co
 
 | Page | What it shows |
 | --- | --- |
-| [Home](https://nextstory.marcopontili.com/) | A landing page assembled from `hero`, `feature_grid`, and `cta_band` blocks |
+| [Home](https://nextstory.marcopontili.com/) | A landing page assembled from `hero`, `image_text`, `feature_grid`, and `cta_band` blocks |
 | [How it works](https://nextstory.marcopontili.com/how-it-works) | The path from a Storyblok edit to the live page, each step linked to its file |
 | [Blocks](https://nextstory.marcopontili.com/blocks) | Every block once, labelled with its component name by a CMS toggle |
 | [Deutsch](https://nextstory.marcopontili.com/de) | The same stories through field-level translations, with a language switch |

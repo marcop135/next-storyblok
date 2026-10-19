@@ -34,12 +34,26 @@ it.each(mockPageSlugs)("renders the %s seed story in both languages", (slug) => 
 
 it("renders steps, rich text, and block labels from the seed content", () => {
   const html = render("blocks");
-  for (const name of ["hero", "feature_grid", "steps", "rich_text", "cta_band"]) {
+  for (const name of ["hero", "feature_grid", "steps", "rich_text", "image_text", "accordion", "pull_quote", "cta_band"]) {
     expect(html).toContain(`<p class="block-label">${name}</p>`);
   }
   expect(html).toContain('<ol class="steps__list">');
   expect(html).toContain("<code>StoryblokServerRichText</code>");
   expect(html).toContain("<strong>bold</strong>");
+});
+
+it("renders new block content, image alternatives, and native accordion controls in both languages", () => {
+  const en = render("blocks");
+  const de = render("blocks", "de");
+  expect(en).toContain('alt="Next Story: editors own the content');
+  expect(de).toContain('alt="Next Story: Die Redaktion verwaltet die Inhalte');
+  expect(en).toContain("<summary>What can an editor change?</summary>");
+  expect(de).toContain("<summary>Was kann die Redaktion ändern?</summary>");
+  expect(de).toContain("Die Redaktion kann Abschnitte umsortieren");
+  expect(en).toContain("One block at a time. Each with a concrete example.");
+  expect(de).toContain("Ein Block nach dem anderen. Jeder mit einem konkreten Beispiel.");
+  expect(de).toContain('href="/de/how-it-works"');
+  expect(de).not.toContain("What can an editor change?");
 });
 
 it("serves German copy and German links from field-level translations", () => {

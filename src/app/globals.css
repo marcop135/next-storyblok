@@ -246,6 +246,40 @@ a {
   padding: 4.5rem 0 3.5rem;
 }
 
+.hero__layout {
+  display: grid;
+  align-items: center;
+  gap: 2rem;
+}
+
+.hero__figure,
+.image-text__figure {
+  margin: 0;
+  min-width: 0;
+}
+
+.hero__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 0.35rem;
+}
+
+.hero__media img {
+  object-fit: cover;
+}
+
+.image-credit {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.image-credit a {
+  color: inherit;
+}
+
 .eyebrow {
   margin: 0 0 0.75rem;
   font-size: 0.85rem;
@@ -471,11 +505,12 @@ a {
 }
 
 @media (min-width: 48rem) {
+  .hero__layout,
   .image-text__layout {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
 
-  .image-text__layout--reversed .image-text__media {
+  .image-text__layout--reversed .image-text__figure {
     grid-column: 2;
     grid-row: 1;
   }

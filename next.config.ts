@@ -13,7 +13,7 @@ const csp = [
   "default-src 'self'",
   `script-src 'self' 'unsafe-inline' ${matomo} https://app.storyblok.com${isDev ? " 'unsafe-eval'" : ""}`,
   "style-src 'self' 'unsafe-inline'",
-  `img-src 'self' data: blob: https://a.storyblok.com ${matomo}`,
+  `img-src 'self' data: blob: https://a.storyblok.com https://images.unsplash.com ${matomo}`,
   "font-src 'self'",
   `connect-src 'self' ${matomo}${isDev ? " ws: wss:" : ""}`,
   "frame-ancestors 'self' https://app.storyblok.com",
@@ -42,6 +42,11 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "a.storyblok.com",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "/photo-*",
       },
     ],
   },

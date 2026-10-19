@@ -18,6 +18,8 @@ export type HeroBlok = SbBlokData & {
   cta_href?: string;
   secondary_label?: string;
   secondary_href?: string;
+  image?: { filename: string; alt?: string | null; copyright?: string | null; source?: string | null };
+  image_alt?: string;
 };
 
 export type FeatureGridBlok = SbBlokData & {
@@ -77,7 +79,7 @@ export type ImageTextBlok = SbBlokData & {
   component: "image_text";
   headline: string;
   text?: string;
-  image?: { filename: string; alt?: string | null };
+  image?: { filename: string; alt?: string | null; copyright?: string | null; source?: string | null };
   image_alt?: string;
   image_right?: boolean;
   link_label?: string;

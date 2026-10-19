@@ -9,9 +9,6 @@ Next.js App Router marketing site driven by **Storyblok** blocks. Editors own co
 
 **Live:** [nextstory.marcopontili.com](https://nextstory.marcopontili.com)
 
-[![CI](https://github.com/marcop135/next-storyblok/actions/workflows/ci.yml/badge.svg)](https://github.com/marcop135/next-storyblok/actions/workflows/ci.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-
 ## Click through the demo
 
 | Page | What it shows |
@@ -51,11 +48,12 @@ Open http://localhost:3000. Without a token, the seed stories in `storyblok/stor
 
 ## Stack
 
-- Next.js 16 App Router (RSC) + React 19
-- `@storyblok/react` v7
+- Next.js 16 App Router, React 19 Server Components, and TypeScript
+- Storyblok headless CMS with `@storyblok/react` v7
 - Vercel production hosting
 - Cookieless self-hosted Matomo; AI-assistant fetches reported from the proxy ([privacy](https://nextstory.marcopontili.com/privacy))
-- Hand-written CSS with light and dark themes + `next/font`
+- CSS custom properties with system light and dark themes
+- Fraunces and Source Sans 3 via `next/font/google`
 
 ## Contributing
 

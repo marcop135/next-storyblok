@@ -26,7 +26,17 @@
         "secondary_label": "See the blocks",
         "secondary_label__i18n__de": "Die Blöcke ansehen",
         "secondary_href": "/blocks",
-        "secondary_href__i18n__de": "/de/blocks"
+        "secondary_href__i18n__de": "/de/blocks",
+        "image": {
+          "id": null,
+          "fieldtype": "asset",
+          "filename": "https://images.unsplash.com/photo-1520588451467-4c904eb6d035?auto=format&fit=crop&w=1600&h=1200&q=85",
+          "alt": "A desktop computer and laptop in a bright design workspace",
+          "copyright": "Domenico Loia / Unsplash",
+          "source": "https://unsplash.com/photos/white-imac-on-brown-wooden-desk-o8Au1Bt85HQ"
+        },
+        "image_alt": "A desktop computer and laptop in a bright design workspace",
+        "image_alt__i18n__de": "Desktop-Computer und Laptop an einem hellen Design-Arbeitsplatz"
       },
       {
         "_uid": "home-image-text",
@@ -36,19 +46,15 @@
         "text": "This project grows one block at a time. The block library shows each section on its own, so you can see how the pages fit together.",
         "text__i18n__de": "Dieses Projekt wächst Block für Block. Die Block-Bibliothek zeigt jeden Abschnitt einzeln. So wird sichtbar, wie sich die Seiten zusammensetzen.",
         "image": {
-          "id": 232291880480383,
-          "alt": "",
-          "name": "",
-          "focus": "",
-          "title": "",
-          "source": "",
-          "filename": "https://a.storyblok.com/f/295862282921450/1200x630/522882581d/next-story-blocks.png",
-          "copyright": "",
+          "id": null,
           "fieldtype": "asset",
-          "meta_data": {}
+          "filename": "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1600&h=840&q=85",
+          "alt": "Watercolor wireframe sketches showing reusable sections in website layouts",
+          "copyright": "Hal Gatewood / Unsplash",
+          "source": "https://unsplash.com/photos/watercolor-wireframe-sketches-of-website-layouts-tZc3vjPCk-Q"
         },
-        "image_alt": "Next Story: editors own the content, developers own the components. A diagram shows hero, feature grid, and call to action blocks.",
-        "image_alt__i18n__de": "Next Story: Die Redaktion verwaltet die Inhalte, die Entwicklung die Komponenten. Eine Grafik zeigt Hero, Feature-Raster und Call-to-Action als Blöcke.",
+        "image_alt": "Watercolor wireframe sketches showing reusable sections in website layouts",
+        "image_alt__i18n__de": "Aquarellierte Website-Skizzen mit wiederverwendbaren Seitenabschnitten",
         "image_right": true,
         "link_label": "Explore the blocks",
         "link_label__i18n__de": "Blöcke entdecken",

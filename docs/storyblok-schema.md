@@ -16,7 +16,7 @@ npm run storyblok:types               # regenerate src/types/storyblok.generated
 | Component | Kind | Renders as |
 | --- | --- | --- |
 | `page` | content type | Page body; `show_block_labels` labels each section with its component name |
-| `hero` | nestable | Headline, lead, primary and secondary link |
+| `hero` | nestable | Headline, lead, links, optional image with translated alt text, and linked photographer credit |
 | `feature_grid` / `feature` | nestable | Card grid; a feature with `link_href` becomes a link |
 | `steps` / `step` | nestable | Numbered list; `file` links the step to a path in this repository |
 | `rich_text` | nestable | Storyblok rich text rendered on the server |

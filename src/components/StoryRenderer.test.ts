@@ -1,6 +1,9 @@
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { expect, it, vi } from "vitest";
+import { readFileSync } from "node:fs";
+import Hero from "@/components/Hero";
+import type { HeroBlok } from "@/components/types";
 
 import StoryRenderer from "@/components/StoryRenderer";
 import { mockHomeStory, mockPageSlugs, mockStoryForSlug } from "@/lib/mock-story";
@@ -22,8 +25,9 @@ it("renders CMS blocks on the server without a client provider or delivery token
   expect(html).toContain("Editors own the page");
   expect(html).toContain("Read the code behind this page");
   expect(html).toContain('class="wrap hero__layout"');
-  expect(html).toContain('href="https://unsplash.com/photos/white-imac-on-brown-wooden-desk-o8Au1Bt85HQ"');
-  expect(html).toContain("Domenico Loia / Unsplash");
+  expect(html).toContain('class="publishing-visual"');
+  expect(html).not.toContain("Domenico Loia / Unsplash");
+  expect(html).not.toContain("photo-1520588451467-4c904eb6d035");
   expect(html).toContain('href="https://unsplash.com/photos/watercolor-wireframe-sketches-of-website-layouts-tZc3vjPCk-Q"');
   expect(html).toContain("Hal Gatewood / Unsplash");
   expect(html).not.toContain("next-story-blocks.png");
@@ -40,7 +44,7 @@ it.each(mockPageSlugs)("renders the %s seed story in both languages", (slug) => 
 
 it("renders steps, rich text, and block labels from the seed content", () => {
   const html = render("blocks");
-  for (const name of ["hero", "feature_grid", "steps", "rich_text", "image_text", "accordion", "pull_quote", "cta_band"]) {
+  for (const name of ["hero", "feature_grid", "steps", "rich_text", "image_text", "accordion", "pull_quote", "cta_band", "comparison_table", "code_example"]) {
     expect(html).toContain(`<p class="block-label">${name}</p>`);
   }
   expect(html).toContain('<ol class="steps__list">');
@@ -51,8 +55,10 @@ it("renders steps, rich text, and block labels from the seed content", () => {
 it("renders new block content, image alternatives, and native accordion controls in both languages", () => {
   const en = render("blocks");
   const de = render("blocks", "de");
-  expect(en).toContain('alt="Next Story: editors own the content');
-  expect(de).toContain('alt="Next Story: Die Redaktion verwaltet die Inhalte');
+  expect(en).toContain('alt="Watercolor wireframe sketches showing reusable sections in website layouts"');
+  expect(de).toContain('alt="Aquarellierte Website-Skizzen mit wiederverwendbaren Seitenabschnitten"');
+  expect(en).toContain("Hal Gatewood / Unsplash");
+  expect(de).toContain("Hal Gatewood / Unsplash");
   expect(en).toContain("<summary>What can an editor change?</summary>");
   expect(de).toContain("<summary>Was kann die Redaktion ändern?</summary>");
   expect(de).toContain("Die Redaktion kann Abschnitte umsortieren");
@@ -65,9 +71,33 @@ it("renders new block content, image alternatives, and native accordion controls
 it("serves German copy and German links from field-level translations", () => {
   const html = render("home", "de");
   expect(html).toContain("Jeden Markt aus einem Content-Modell bedienen");
-  expect(html).toContain('alt="Desktop-Computer und Laptop an einem hellen Design-Arbeitsplatz"');
+  expect(html).toContain("Modellieren");
+  expect(html).toContain("Veröffentlichen");
+  expect(html).toContain("Texte und Übersetzungen");
   expect(html).toContain('alt="Aquarellierte Website-Skizzen mit wiederverwendbaren Seitenabschnitten"');
   expect(html).toContain('href="/de/how-it-works"');
+});
+
+it("keeps the animated layout without an image and preserves the non-animated image mode", () => {
+  const blok = structuredClone(mockHomeStory.content.body[0]) as HeroBlok;
+  delete blok.image;
+  expect(renderToStaticMarkup(createElement(Hero, { blok }))).toContain('class="wrap hero__layout"');
+  blok.animated_visual = false;
+  blok.image = { filename: "https://images.unsplash.com/photo-test" };
+  blok.image_alt = "Fallback photo";
+  const html = renderToStaticMarkup(createElement(Hero, { blok }));
+  expect(html).toContain('alt="Fallback photo"');
+  expect(html).not.toContain('class="publishing-visual"');
+});
+
+it("shows translated table cells and code linked to a real source excerpt", () => {
+  const html = render("blocks", "de");
+  expect(html).toContain('scope="col"');
+  expect(html).toContain('scope="row"');
+  expect(html).toContain("Erlaubte Blöcke im Schema festlegen");
+  expect(html).toContain("Registrierungsfunktion");
+  const example = mockStoryForSlug("how-it-works")!.content.body.find((b: { component: string }) => b.component === "code_example");
+  expect(readFileSync(example.source_path, "utf8").replaceAll("\r\n", "\n")).toContain(example.code);
 });
 
 it("does not consume another editor's bridge cache when rendering a public story", () => {

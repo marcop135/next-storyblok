@@ -36,7 +36,18 @@
           "source": "https://unsplash.com/photos/white-imac-on-brown-wooden-desk-o8Au1Bt85HQ"
         },
         "image_alt": "A desktop computer and laptop in a bright design workspace",
-        "image_alt__i18n__de": "Desktop-Computer und Laptop an einem hellen Design-Arbeitsplatz"
+        "image_alt__i18n__de": "Desktop-Computer und Laptop an einem hellen Design-Arbeitsplatz",
+        "animated_visual": true,
+        "visual_model_label": "Model",
+        "visual_model_label__i18n__de": "Modellieren",
+        "visual_preview_label": "Preview",
+        "visual_preview_label__i18n__de": "Vorschau",
+        "visual_publish_label": "Publish",
+        "visual_publish_label__i18n__de": "Veröffentlichen",
+        "visual_serve_label": "Serve",
+        "visual_serve_label__i18n__de": "Ausliefern",
+        "visual_caption": "One content model, from draft to published pages in English and German.",
+        "visual_caption__i18n__de": "Ein Content-Modell, vom Entwurf zu veröffentlichten Seiten auf Englisch und Deutsch."
       },
       {
         "_uid": "home-image-text",
@@ -108,6 +119,186 @@
             "link_href__i18n__de": "/"
           }
         ]
+      },
+      {
+        "_uid": "home-comparison",
+        "component": "comparison_table",
+        "headline": "What changes in the CMS, what changes in code",
+        "headline__i18n__de": "Was sich im CMS ändert und was im Code",
+        "intro": "Editors work with the blocks developers provide. The content model connects both sides.",
+        "intro__i18n__de": "Die Redaktion arbeitet mit den Blöcken, die die Entwicklung bereitstellt. Das Content-Modell verbindet beide Seiten.",
+        "caption": "Content and component ownership",
+        "caption__i18n__de": "Verantwortung für Inhalte und Komponenten",
+        "table": {
+          "fieldtype": "table",
+          "thead": [
+            {
+              "_uid": "head-0",
+              "value": "Task",
+              "component": "_table_head"
+            },
+            {
+              "_uid": "head-1",
+              "value": "Editor in Storyblok",
+              "component": "_table_head"
+            },
+            {
+              "_uid": "head-2",
+              "value": "Developer in the repository",
+              "component": "_table_head"
+            }
+          ],
+          "tbody": [
+            {
+              "_uid": "row-0",
+              "component": "_table_row",
+              "body": [
+                {
+                  "_uid": "cell-0-0",
+                  "value": "Copy and translations",
+                  "component": "_table_col"
+                },
+                {
+                  "_uid": "cell-0-1",
+                  "value": "Edit fields and publish",
+                  "component": "_table_col"
+                },
+                {
+                  "_uid": "cell-0-2",
+                  "value": "No deploy needed",
+                  "component": "_table_col"
+                }
+              ]
+            },
+            {
+              "_uid": "row-1",
+              "component": "_table_row",
+              "body": [
+                {
+                  "_uid": "cell-1-0",
+                  "value": "Arrange sections",
+                  "component": "_table_col"
+                },
+                {
+                  "_uid": "cell-1-1",
+                  "value": "Reorder existing blocks",
+                  "component": "_table_col"
+                },
+                {
+                  "_uid": "cell-1-2",
+                  "value": "Define allowed blocks in the schema",
+                  "component": "_table_col"
+                }
+              ]
+            },
+            {
+              "_uid": "row-2",
+              "component": "_table_row",
+              "body": [
+                {
+                  "_uid": "cell-2-0",
+                  "value": "Add a new block",
+                  "component": "_table_col"
+                },
+                {
+                  "_uid": "cell-2-1",
+                  "value": "Use the available block",
+                  "component": "_table_col"
+                },
+                {
+                  "_uid": "cell-2-2",
+                  "value": "Add the schema, React component, and tests",
+                  "component": "_table_col"
+                }
+              ]
+            }
+          ]
+        },
+        "table__i18n__de": {
+          "fieldtype": "table",
+          "thead": [
+            {
+              "_uid": "head-0",
+              "value": "Aufgabe",
+              "component": "_table_head"
+            },
+            {
+              "_uid": "head-1",
+              "value": "Redaktion in Storyblok",
+              "component": "_table_head"
+            },
+            {
+              "_uid": "head-2",
+              "value": "Entwicklung im Repository",
+              "component": "_table_head"
+            }
+          ],
+          "tbody": [
+            {
+              "_uid": "row-0",
+              "component": "_table_row",
+              "body": [
+                {
+                  "_uid": "cell-0-0",
+                  "value": "Texte und Übersetzungen",
+                  "component": "_table_col"
+                },
+                {
+                  "_uid": "cell-0-1",
+                  "value": "Felder bearbeiten und veröffentlichen",
+                  "component": "_table_col"
+                },
+                {
+                  "_uid": "cell-0-2",
+                  "value": "Kein Deployment nötig",
+                  "component": "_table_col"
+                }
+              ]
+            },
+            {
+              "_uid": "row-1",
+              "component": "_table_row",
+              "body": [
+                {
+                  "_uid": "cell-1-0",
+                  "value": "Abschnitte anordnen",
+                  "component": "_table_col"
+                },
+                {
+                  "_uid": "cell-1-1",
+                  "value": "Vorhandene Blöcke umsortieren",
+                  "component": "_table_col"
+                },
+                {
+                  "_uid": "cell-1-2",
+                  "value": "Erlaubte Blöcke im Schema festlegen",
+                  "component": "_table_col"
+                }
+              ]
+            },
+            {
+              "_uid": "row-2",
+              "component": "_table_row",
+              "body": [
+                {
+                  "_uid": "cell-2-0",
+                  "value": "Einen neuen Block hinzufügen",
+                  "component": "_table_col"
+                },
+                {
+                  "_uid": "cell-2-1",
+                  "value": "Den bereitgestellten Block verwenden",
+                  "component": "_table_col"
+                },
+                {
+                  "_uid": "cell-2-2",
+                  "value": "Schema, React-Komponente und Tests ergänzen",
+                  "component": "_table_col"
+                }
+              ]
+            }
+          ]
+        }
       },
       {
         "_uid": "home-cta",

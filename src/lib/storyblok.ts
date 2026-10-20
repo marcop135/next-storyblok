@@ -2,6 +2,8 @@ import { setComponents } from "@storyblok/react/rsc";
 
 import Accordion from "@/components/Accordion";
 import AccordionItem from "@/components/AccordionItem";
+import ComparisonTable from "@/components/ComparisonTable";
+import CodeExample from "@/components/CodeExample";
 import CtaBand from "@/components/CtaBand";
 import Feature from "@/components/Feature";
 import FeatureGrid from "@/components/FeatureGrid";
@@ -26,6 +28,8 @@ export const storyblokComponents = {
   accordion: Accordion,
   accordion_item: AccordionItem,
   pull_quote: PullQuote,
+  comparison_table: ComparisonTable,
+  code_example: CodeExample,
 };
 
 export function hasStoryblokToken(): boolean {

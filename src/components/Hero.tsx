@@ -3,6 +3,7 @@ import Link from "next/link";
 import { storyblokEditable } from "@storyblok/react/rsc";
 
 import type { HeroBlok } from "@/components/types";
+import PublishingVisual from "@/components/PublishingVisual";
 
 export default function Hero({ blok }: { blok: HeroBlok }) {
   const primary = blok.cta_label && blok.cta_href;
@@ -10,7 +11,7 @@ export default function Hero({ blok }: { blok: HeroBlok }) {
   const imageSrc = blok.image?.filename;
   return (
     <section className="hero" {...storyblokEditable(blok)}>
-      <div className={`wrap${imageSrc ? " hero__layout" : ""}`}>
+      <div className={`wrap${imageSrc || blok.animated_visual ? " hero__layout" : ""}`}>
         <div>
           {blok.eyebrow ? <p className="eyebrow">{blok.eyebrow}</p> : null}
           <h1>{blok.headline}</h1>
@@ -30,7 +31,12 @@ export default function Hero({ blok }: { blok: HeroBlok }) {
             </p>
           ) : null}
         </div>
-        {imageSrc ? (
+        {blok.animated_visual ? (
+          <PublishingVisual
+            labels={[blok.visual_model_label || "Model", blok.visual_preview_label || "Preview", blok.visual_publish_label || "Publish", blok.visual_serve_label || "Serve"]}
+            caption={blok.visual_caption || "One content model, from draft to published pages in English and German."}
+          />
+        ) : imageSrc ? (
           <figure className="hero__figure">
             <div className="hero__media">
               <Image

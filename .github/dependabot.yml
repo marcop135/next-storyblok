@@ -2,12 +2,27 @@ version: 2
 updates:
   - package-ecosystem: npm
     directory: /
+    target-branch: develop
+    groups:
+      react:
+        patterns:
+          - react
+          - react-dom
+          - "@types/react"
+          - "@types/react-dom"
+      next-eslint:
+        patterns:
+          - next
+          - eslint
+          - eslint-config-next
+          - "@next/*"
     schedule:
       interval: weekly
     open-pull-requests-limit: 5
 
   - package-ecosystem: github-actions
     directory: /
+    target-branch: develop
     schedule:
       interval: weekly
     open-pull-requests-limit: 5

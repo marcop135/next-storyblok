@@ -1,6 +1,8 @@
-# Storyblok space schema (Northline)
+# Storyblok space schema (Next Story)
 
-[`storyblok/components.json`](../storyblok/components.json) is the content model and [`storyblok/stories/`](../storyblok/stories/) holds the seed stories. The same files feed the space, the generated TypeScript types, and the offline mock stories.
+Open [Storyblok](https://app.storyblok.com/), sign in, select the project space, then open **Content** and a story such as `home`. The Visual Editor edits copy, blocks, and translations; `config` holds navigation and the footer. Save keeps a draft; Publish updates the live content through the configured webhook.
+
+[`storyblok/components.json`](../storyblok/components.json) defines the content model; [`storyblok/stories/`](../storyblok/stories/) contains the seed stories used by the space, generated types, and offline mode.
 
 ```bash
 npm run storyblok:push -- --dry-run   # list the changes

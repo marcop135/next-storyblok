@@ -30,10 +30,14 @@ export function SiteHeader({ copy }: { copy: Record<Locale, ChromeCopy> }) {
   const locale = useLocale();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [previousPathname, setPreviousPathname] = useState(pathname);
   const home = locale === defaultLocale ? "/" : `/${locale}`;
 
   // Close the small-screen menu after navigating or on Escape.
-  useEffect(() => setOpen(false), [pathname]);
+  if (pathname !== previousPathname) {
+    setPreviousPathname(pathname);
+    setOpen(false);
+  }
   useEffect(() => {
     if (!open) return;
     const onKey = (event: KeyboardEvent) => event.key === "Escape" && setOpen(false);

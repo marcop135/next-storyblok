@@ -7,6 +7,14 @@
 
 ## [Unreleased]
 
+### Changed
+
+- Render the architecture diagram from top to bottom for GitHub.
+- Update Next.js, React, React DOM, Vitest, and ESLint; align the Next.js lint configuration with ESLint 10.
+- Target dependency PRs at develop and group React and Next.js/ESLint updates by compatibility.
+- Document CMS access and preserve an empty published page list instead of adding seed pages to the sitemap.
+- Reset navigation state without an effect-driven render and patch the transitive Markdown parser.
+
 ## [0.7.0] - 2026-10-19
 
 ### Added

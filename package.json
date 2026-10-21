@@ -15,7 +15,8 @@
     "storyblok:types": "node scripts/storyblok-types.mjs",
     "storyblok:types:check": "node scripts/storyblok-types.mjs --check",
     "storyblok:push": "node --env-file-if-exists=.env scripts/storyblok-push.mjs",
-    "smoke": "node scripts/smoke.mjs"
+    "smoke": "node scripts/smoke.mjs",
+    "verify:agent-readiness": "node scripts/verify-agent-readiness.mjs"
   },
   "dependencies": {
     "@storyblok/react": "^7.3.1",

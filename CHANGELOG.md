@@ -10,6 +10,7 @@
 ### Added
 
 - Add localized comparison-table and source-linked code-example blocks.
+- Add published Markdown, block metadata, discovery catalogs, and read-only WebMCP tools.
 
 ### Changed
 

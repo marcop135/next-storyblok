@@ -4,6 +4,7 @@ import Script from "next/script";
 import type { ReactNode } from "react";
 
 import MatomoRouteTracker from "@/components/MatomoRouteTracker";
+import AgentTools from "@/components/AgentTools";
 import { SiteFooter, SiteHeader, type ChromeCopy } from "@/components/SiteChrome";
 import StoryblokProvider from "@/components/StoryblokProvider";
 import {
@@ -97,6 +98,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           />
           <Script src="/matomo.js" strategy="afterInteractive" />
           <MatomoRouteTracker />
+          <AgentTools />
         </body>
       </html>
     </StoryblokProvider>

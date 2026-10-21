@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 
 import { OG_IMAGE, REPO_URL, SITE_NAME, SITE_URL } from "@/lib/site";
+import { agentResources, agentTasks } from "@/lib/agent-resources";
 
 const title = "For agents";
 const description =
-  "How AI agents read Next Story: server-rendered HTML, llms.txt, sitemap, hreflang, and JSON-LD. No public API, MCP, or login.";
+  "Read Next Story as Markdown, inspect its block model, and trace examples to source through public HTTP resources and read-only WebMCP tools.";
 
 export const metadata: Metadata = {
   title,
   description,
-  alternates: { canonical: "/for-agents" },
+  alternates: { canonical: "/for-agents", types: { "text/markdown": "/content/for-agents.md" } },
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
@@ -21,13 +22,6 @@ export const metadata: Metadata = {
   },
 };
 
-const surfaces = [
-  ["/llms.txt", "Site map, docs links, and what each page shows."],
-  ["/sitemap.xml", "Every published page in English and German, built from the Storyblok Links API."],
-  ["/robots.txt", "Crawl rules and content signals: search and AI input yes, AI training no."],
-  ["/", "Server-rendered HTML with JSON-LD (WebSite, SoftwareSourceCode, Person) and hreflang alternates."],
-];
-
 export default function ForAgentsPage() {
   return (
     <main id="main" className="wrap prose">
@@ -37,28 +31,14 @@ export default function ForAgentsPage() {
         a Next.js App Router demo whose pages come from Storyblok blocks.
       </p>
 
-      <h2>How to read the site</h2>
+      <h2>Reading workflows</h2>
       <ol>
-        <li>
-          Start at <a href="/llms.txt">/llms.txt</a> for the page list and docs.
-        </li>
-        <li>
-          Fetch any page as plain HTML: content is rendered on the server, so
-          no JavaScript is needed to read it.
-        </li>
-        <li>
-          German routes live under <code>/de</code>; each page links its other
-          language through <code>hreflang</code>.
-        </li>
-        <li>
-          For how it is built, read the <a href={REPO_URL}>source on GitHub</a>,
-          starting with <code>docs/architecture.md</code>.
-        </li>
+        {agentTasks.map((task) => <li key={task.name}><strong>{task.name}.</strong> {task.instruction}<pre className="agent-request" tabIndex={0} aria-label={task.name}><code>curl {SITE_URL}{task.request}</code></pre></li>)}
       </ol>
 
       <h2>Surfaces</h2>
       <ul>
-        {surfaces.map(([path, purpose]) => (
+        {agentResources.map(({ path, purpose }) => (
           <li key={path}>
             <a href={path}>
               <code>{path}</code>
@@ -68,15 +48,11 @@ export default function ForAgentsPage() {
         ))}
       </ul>
 
-      <h2>What this is not</h2>
-      <ul>
-        <li>No public API, hosted MCP, or WebMCP tools.</li>
-        <li>
-          <code>/api/preview</code> and <code>/api/revalidate</code> serve
-          Storyblok only and require a secret.
-        </li>
-        <li>No accounts, API keys, or OAuth.</li>
-      </ul>
+      <h2>Browser tools</h2>
+      <p>Supporting browsers expose <code>get_page_markdown</code> for the current published page and <code>list_blocks</code> for the block model. Native WebMCP is feature-detected. Other browsers can use the HTTP resources directly.</p>
+      <h2>Access and source</h2>
+      <p>Public reading resources require no login or API key and return published content. Storyblok preview and revalidation remain authenticated CMS operations. <a href="/auth.md">Access rules</a>.</p>
+      <p>The <a href={REPO_URL}>source repository</a> connects these examples to their implementation. Start with <code>docs/architecture.md</code>.</p>
     </main>
   );
 }

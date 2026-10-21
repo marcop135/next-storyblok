@@ -10,6 +10,7 @@ npm run changelog:lint
 npm run build
 npm start              # after build
 npm run smoke          # route, language, link, and sitemap checks against a running build
+npm run verify:agent-readiness  # public Markdown/JSON, catalogs, parity, access, and 404s
 ```
 
 ## Storyblok
@@ -46,8 +47,8 @@ Example body: `{"action":"published","story_id":123,"full_slug":"pricing"}`. A s
 ## Brand images
 
 ```bash
-npx -y -p playwright@1.61.1 -p sharp@0.35.4 node .github/brand/render.mjs          # write
-npx -y -p playwright@1.61.1 -p sharp@0.35.4 node .github/brand/render.mjs --check  # verify
+npm run brand:render    # requires the brand kit's Playwright/sharp tooling
+npm run brand:check
 ```
 
-Sources and kit notes: [.github/brand/README.md](../.github/brand/README.md).
+Sources and tooling: [.github/brand/README.md](../.github/brand/README.md). Local commits, changelog/version ownership, annotated tags, promotion, and CMS publication: [development cycle](development-cycle.md).

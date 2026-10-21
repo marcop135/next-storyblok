@@ -11,6 +11,7 @@
 
 - Add localized comparison-table and source-linked code-example blocks.
 - Add published Markdown, block metadata, discovery catalogs, and read-only WebMCP tools.
+- Document the development cycle, annotated release tags, and coordinated CMS publication.
 
 ### Changed
 

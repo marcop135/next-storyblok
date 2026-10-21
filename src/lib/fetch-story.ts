@@ -29,7 +29,7 @@ export function cdnBaseUrl(): string {
 export async function fetchStory(
   slug: string,
   language?: string,
-  options?: { version: "draft" },
+  options?: { version: "draft" | "published" },
 ): Promise<StoryResult | null> {
   const path = normalizeStorySlug(slug);
   if (!path) return null;

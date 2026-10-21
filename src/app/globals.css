@@ -358,6 +358,7 @@ a {
 .code-example__bar a { overflow-wrap: anywhere; }
 .code-example pre { margin: 0; padding: 1.5rem; overflow-x: auto; border: 1px solid var(--line); border-top: 0; background: var(--surface); border-radius: 0 0 0.35rem 0.35rem; font-size: 0.9rem; }
 .code-example figcaption { color: var(--muted); font-size: 0.85rem; margin-top: 0.75rem; }
+.agent-request { max-width: 100%; overflow-x: auto; padding: 0.75rem; border: 1px solid var(--line); border-radius: 0.35rem; background: var(--surface); font-size: 0.8rem; }
 
 .image-credit {
   margin-top: 0.5rem;

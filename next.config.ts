@@ -32,7 +32,7 @@ const securityHeaders = [
   {
     key: "Link",
     value:
-      '</sitemap.xml>; rel="sitemap", </llms.txt>; rel="describedby"; type="text/plain"',
+      '</sitemap.xml>; rel="sitemap", </llms.txt>; rel="describedby"; type="text/plain", </openapi.json>; rel="service-desc"; type="application/json", </.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json"',
   },
 ];
 

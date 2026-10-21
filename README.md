@@ -5,7 +5,7 @@
 
 # Next Story
 
-Next.js App Router marketing site driven by **Storyblok** blocks. Editors own copy, structure, and translations in a headless CMS; developers own the components, draft preview, and cache invalidation.
+Next.js App Router marketing site driven by **Storyblok** blocks. A public learning project connecting working examples to their source: content modelling, server rendering, draft preview, cache invalidation, and read-only agent access.
 
 **Live:** [nextstory.marcopontili.com](https://nextstory.marcopontili.com)
 
@@ -13,10 +13,11 @@ Next.js App Router marketing site driven by **Storyblok** blocks. Editors own co
 
 | Page | What it shows |
 | --- | --- |
-| [Home](https://nextstory.marcopontili.com/) | A landing page assembled from `hero`, `image_text`, `feature_grid`, and `cta_band` blocks |
-| [How it works](https://nextstory.marcopontili.com/how-it-works) | The path from a Storyblok edit to the live page, each step linked to its file |
+| [Home](https://nextstory.marcopontili.com/) | Animated publishing-flow illustration and an editable comparison of CMS/code ownership |
+| [How it works](https://nextstory.marcopontili.com/how-it-works) | From Storyblok edit to live page, with source-linked steps and an actual code excerpt |
 | [Blocks](https://nextstory.marcopontili.com/blocks) | Every block once, labelled with its component name by a CMS toggle |
 | [Deutsch](https://nextstory.marcopontili.com/de) | The same stories through field-level translations, with a language switch |
+| [For agents](https://nextstory.marcopontili.com/for-agents) | Published Markdown, a JSON block catalog, HTTP discovery, and read-only browser tools |
 
 ## Where to look
 
@@ -31,8 +32,10 @@ Next.js App Router marketing site driven by **Storyblok** blocks. Editors own co
 | German routes, `hreflang`, and `<html lang>` per request | [`src/lib/i18n.ts`](src/lib/i18n.ts), [`src/proxy.ts`](src/proxy.ts) |
 | Sitemap built from the Storyblok Links API | [`src/lib/published-slugs.ts`](src/lib/published-slugs.ts) |
 | Offline development from the same seed stories | [`src/lib/mock-story.ts`](src/lib/mock-story.ts), [`src/lib/localize.ts`](src/lib/localize.ts) |
+| HTML and Markdown share content; public Markdown explicitly requests published stories | [`src/lib/story-markdown.ts`](src/lib/story-markdown.ts), [`src/app/content/[...slug]/route.ts`](src/app/content/[...slug]/route.ts) |
+| HTTP resources and browser tools share URLs and field metadata | [`src/lib/agent-resources.ts`](src/lib/agent-resources.ts), [`src/lib/agent-tools.ts`](src/lib/agent-tools.ts) |
 
-Request path and diagram: [docs/architecture.md](docs/architecture.md). Schema and languages: [docs/storyblok-schema.md](docs/storyblok-schema.md). Commands: [docs/commands.md](docs/commands.md).
+Request path: [architecture](docs/architecture.md). Content model: [schema](docs/storyblok-schema.md). Setup and checks: [commands](docs/commands.md). Commits, versions, annotated tags, CMS publication, and Vercel/GitHub releases: [development cycle](docs/development-cycle.md).
 
 ## Quick start
 
@@ -44,7 +47,7 @@ npm run dev
 
 Open http://localhost:3000. Without a token, the seed stories in `storyblok/stories/` render (`source: mock`) in both languages. With a preview token and matching space, the badge reads `source: storyblok`.
 
-`npm test` covers rendering, translations, preview, delivery, sitemap, and webhooks; `npm run smoke` checks every route of a running build. Production requests use published content, even when `STORYBLOK_VERSION=draft`; authenticated preview uses uncached drafts.
+`npm test` covers rendering, translations, delivery, preview, webhooks, Markdown, and tool lifecycle. Against a running build, `npm run smoke` checks page journeys and `npm run verify:agent-readiness` checks public resources. Production requests use published content outside authenticated preview; Markdown always requests published content.
 
 ## Stack
 

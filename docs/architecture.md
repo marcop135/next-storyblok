@@ -3,7 +3,7 @@
 Next Story is a demo B2B marketing site. The **repo and host** advertise the stack (`next-storyblok`); Storyblok owns page content.
 
 ```mermaid
-flowchart LR
+flowchart TB
   model["storyblok/components.json<br/>storyblok/stories/"] -- "npm run storyblok:push" --> space[(Storyblok space)]
   model -- "npm run storyblok:types" --> types["src/types/storyblok.generated.ts"]
   editor[Visual Editor] -- "/api/preview" --> draft["Next.js draft mode<br/>uncached drafts"]

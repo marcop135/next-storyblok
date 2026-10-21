@@ -7,6 +7,10 @@
 
 ## [Unreleased]
 
+### Added
+
+- Add localized comparison-table and source-linked code-example blocks.
+
 ### Changed
 
 - Render the architecture diagram from top to bottom for GitHub.
@@ -14,6 +18,8 @@
 - Target dependency PRs at develop and group React and Next.js/ESLint updates by compatibility.
 - Document CMS access and preserve an empty published page list instead of adding seed pages to the sitemap.
 - Reset navigation state without an effect-driven render and patch the transitive Markdown parser.
+- Replace the home hero photo with an accessible publishing-flow animation.
+- Use the credited Hal Gatewood wireframe photo on home and in the block library.
 
 ## [0.7.0] - 2026-10-19
 

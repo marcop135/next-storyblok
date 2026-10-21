@@ -152,6 +152,19 @@
         }
       },
       {
+        "_uid": "how-code",
+        "component": "code_example",
+        "headline": "The schema names resolve to React components",
+        "headline__i18n__de": "Die Schema-Namen werden React-Komponenten zugeordnet",
+        "explanation": "The server registers the component map before rendering a story. Each block name in the CMS resolves to its implementation.",
+        "explanation__i18n__de": "Der Server registriert die Komponenten-Zuordnung, bevor er eine Story rendert. Jeder Blockname im CMS verweist auf seine Implementierung.",
+        "caption": "The registration function used by the server renderer.",
+        "caption__i18n__de": "Die Registrierungsfunktion, die der Server-Renderer verwendet.",
+        "code": "export function registerStoryblokComponents(): void {\n  setComponents(storyblokComponents);\n}",
+        "language": "TypeScript",
+        "source_path": "src/lib/storyblok.ts"
+      },
+      {
         "_uid": "how-cta",
         "component": "cta_band",
         "headline": "See what each block looks like",

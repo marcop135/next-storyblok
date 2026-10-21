@@ -6,7 +6,7 @@ export type PageBlok = SbBlokData & {
   seo_title?: string;
   seo_description?: string;
   show_block_labels?: boolean;
-  body?: (HeroBlok | FeatureGridBlok | StepsBlok | RichTextBlok | CtaBandBlok | ImageTextBlok | AccordionBlok | PullQuoteBlok)[];
+  body?: (HeroBlok | FeatureGridBlok | StepsBlok | RichTextBlok | CtaBandBlok | ImageTextBlok | AccordionBlok | PullQuoteBlok | ComparisonTableBlok | CodeExampleBlok)[];
 };
 
 export type HeroBlok = SbBlokData & {
@@ -20,6 +20,12 @@ export type HeroBlok = SbBlokData & {
   secondary_href?: string;
   image?: { filename: string; alt?: string | null; copyright?: string | null; source?: string | null };
   image_alt?: string;
+  animated_visual?: boolean;
+  visual_model_label?: string;
+  visual_preview_label?: string;
+  visual_publish_label?: string;
+  visual_serve_label?: string;
+  visual_caption?: string;
 };
 
 export type FeatureGridBlok = SbBlokData & {
@@ -104,6 +110,24 @@ export type PullQuoteBlok = SbBlokData & {
   attribution?: string;
 };
 
+export type ComparisonTableBlok = SbBlokData & {
+  component: "comparison_table";
+  headline: string;
+  intro?: string;
+  caption?: string;
+  table?: { fieldtype: 'table'; thead: { _uid: string; value: string }[]; tbody: { _uid: string; body: { _uid: string; value: string }[] }[] };
+};
+
+export type CodeExampleBlok = SbBlokData & {
+  component: "code_example";
+  headline: string;
+  explanation?: string;
+  caption?: string;
+  code?: string;
+  language?: string;
+  source_path?: string;
+};
+
 export type StoryblokComponentName =
   | "page"
   | "hero"
@@ -118,4 +142,6 @@ export type StoryblokComponentName =
   | "image_text"
   | "accordion"
   | "accordion_item"
-  | "pull_quote";
+  | "pull_quote"
+  | "comparison_table"
+  | "code_example";

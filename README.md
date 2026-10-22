@@ -7,8 +7,8 @@
 
 Next Story is a headless CMS demo built with [Next.js](https://nextjs.org/) App Router and [Storyblok](https://www.storyblok.com/). I keep it as a public learning project: each feature on the live site links back to the code behind it, from content modeling and draft preview to German routes, cache invalidation, and read-only access for agents.
 
-[![CI](https://img.shields.io/github/actions/workflow/status/marcop135/next-storyblok/ci.yml?branch=develop&label=CI)](https://github.com/marcop135/next-storyblok/actions/workflows/ci.yml)
-[![Release](https://img.shields.io/github/v/release/marcop135/next-storyblok?label=Release)](https://github.com/marcop135/next-storyblok/releases/latest)
+[![CI](https://img.shields.io/github/actions/workflow/status/marcop135/nextstory/ci.yml?branch=develop&label=CI)](https://github.com/marcop135/nextstory/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/marcop135/nextstory?label=Release)](https://github.com/marcop135/nextstory/releases/latest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue)](./LICENSE)
 [![Node.js 22+](https://img.shields.io/badge/Node.js-22%2B-339933?logo=nodedotjs&logoColor=white)](https://nodejs.org/)
 [![Next.js 16](https://img.shields.io/badge/Next.js-16-000000?logo=nextdotjs&logoColor=white)](https://nextjs.org/)
@@ -102,7 +102,7 @@ All variables are optional in local mode. Set them in `.env` for CMS mode:
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
-Bug reports and feature requests go through [issues](https://github.com/marcop135/next-storyblok/issues). Vulnerabilities go through [SECURITY.md](./SECURITY.md) instead.
+Bug reports and feature requests go through [issues](https://github.com/marcop135/nextstory/issues). Vulnerabilities go through [SECURITY.md](./SECURITY.md) instead.
 
 ## Author
 

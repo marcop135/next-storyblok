@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Source_Sans_3 } from "next/font/google";
+import { Source_Sans_3 } from "next/font/google";
 import Script from "next/script";
 import type { ReactNode } from "react";
 
@@ -19,13 +19,6 @@ import { fetchSiteConfig, requestLocale } from "@/lib/site-config";
 
 import "./globals.css";
 
-const display = Fraunces({
-  subsets: ["latin"],
-  axes: ["opsz"],
-  variable: "--font-display",
-  display: "swap",
-});
-
 const sans = Source_Sans_3({
   subsets: ["latin"],
   variable: "--font-sans",
@@ -35,7 +28,7 @@ const sans = Source_Sans_3({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Next Story: Next.js and Storyblok marketing demo",
+    default: "Next Story: Next.js and Storyblok headless CMS demo",
     template: "%s · Next Story",
   },
   description: SITE_DESCRIPTION,
@@ -52,7 +45,7 @@ export const metadata: Metadata = {
     type: "website",
     siteName: SITE_NAME,
     locale: "en_US",
-    title: "Next Story: Next.js and Storyblok marketing demo",
+    title: "Next Story: Next.js and Storyblok headless CMS demo",
     description: SITE_DESCRIPTION,
     url: "/",
     images: [OG_IMAGE],
@@ -87,7 +80,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   const copy = await chromeCopy();
   return (
     <StoryblokProvider>
-      <html lang={locale} data-scroll-behavior="smooth" className={`${display.variable} ${sans.variable}`}>
+      <html lang={locale} data-scroll-behavior="smooth" className={sans.variable}>
         <body>
           <SiteHeader copy={copy} />
           {children}

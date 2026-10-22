@@ -2,13 +2,13 @@ export const SITE_URL = "https://nextstory.marcopontili.com";
 export const SITE_NAME = "Next Story";
 export const REPO_URL = "https://github.com/marcop135/next-storyblok";
 export const SITE_DESCRIPTION =
-  "Next.js App Router marketing site driven by Storyblok blocks: draft preview, publish webhooks, and localized cache refresh.";
+  "Explore Storyblok blocks in Next.js App Router: server rendering, draft preview, publish webhooks, localized caching, and read-only content access.";
 
 export const OG_IMAGE = {
   url: "/og.png",
   width: 1200,
   height: 630,
-  alt: "Next Story: Next.js App Router and Storyblok marketing-site demo",
+  alt: "Next Story: Next.js and Storyblok headless CMS demo",
 };
 
 export const AUTHOR = {

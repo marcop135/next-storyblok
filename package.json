@@ -1,8 +1,8 @@
 {
   "name": "next-storyblok",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "private": false,
-  "description": "Next.js App Router + Storyblok marketing-site ownership demo",
+  "description": "Next.js App Router + Storyblok headless CMS demo",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -15,25 +15,25 @@
     "storyblok:types": "node scripts/storyblok-types.mjs",
     "storyblok:types:check": "node scripts/storyblok-types.mjs --check",
     "storyblok:push": "node --env-file-if-exists=.env scripts/storyblok-push.mjs",
-    "smoke": "node scripts/smoke.mjs"
+    "smoke": "node scripts/smoke.mjs",
+    "verify:agent-readiness": "node scripts/verify-agent-readiness.mjs"
   },
   "dependencies": {
     "@storyblok/react": "^7.3.1",
-    "next": "^16.4.0",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "next": "^16.4.2",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.1",
     "@types/node": "^26.6.5",
     "@types/react": "^19.1.12",
     "@types/react-dom": "^19.1.9",
-    "eslint": "^9.36.0",
-    "eslint-config-next": "^15.5.4",
+    "eslint": "^10.13.0",
+    "eslint-config-next": "^16.4.2",
     "typescript": "^5.9.2",
-    "vitest": "^5.0.4"
+    "vitest": "^5.0.5"
   },
   "engines": {
-    "node": ">=22"
+    "node": "^22.13.0 || >=24"
   }
 }

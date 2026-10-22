@@ -7,6 +7,28 @@
 
 ## [Unreleased]
 
+## [0.8.0] - 2026-10-22
+
+### Added
+
+- Add localized comparison-table and source-linked code-example blocks.
+- Add published Markdown, block metadata, discovery catalogs, and read-only WebMCP tools.
+- Document the development cycle, annotated release tags, and coordinated CMS publication.
+
+### Changed
+
+- Render the architecture diagram from top to bottom for GitHub.
+- Update Next.js, React, React DOM, Vitest, and ESLint; align the Next.js lint configuration with ESLint 10.
+- Target dependency PRs at develop and group React and Next.js/ESLint updates by compatibility.
+- Document CMS access and preserve an empty published page list instead of adding seed pages to the sitemap.
+- Reset navigation state without an effect-driven render and patch the transitive Markdown parser.
+- Replace the home hero photo with an accessible publishing-flow animation.
+- Use the credited Hal Gatewood wireframe photo on home and in the block library.
+- Describe Next Story as a headless CMS demo in metadata, seed SEO copy, llms.txt, and docs.
+- Restructure the README with badges, a content-flow diagram, a source map, and Storyblok setup.
+- Simplify the README, social, and Open Graph images to a wordmark beside a labelled block stack.
+- Set headings and the wordmark in Source Sans 3 instead of Fraunces.
+
 ## [0.7.0] - 2026-10-19
 
 ### Added

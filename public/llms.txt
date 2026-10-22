@@ -1,6 +1,6 @@
 # Next Story
 
-> Next.js App Router marketing site driven by Storyblok blocks. Portfolio proof that editors own copy and structure in a headless CMS while developers own components, draft preview, and cache invalidation.
+> Headless CMS demo and public learning project built with Next.js App Router and Storyblok. Working examples connect content modelling, server rendering, draft preview, cache invalidation, and read-only agent access to their source.
 
 - Site: https://nextstory.marcopontili.com/
 - Source: https://github.com/marcop135/next-storyblok (MIT)
@@ -8,16 +8,25 @@
 
 ## Pages
 
-- [Home](https://nextstory.marcopontili.com/): demo landing page rendered from Storyblok blocks
+- [Home](https://nextstory.marcopontili.com/): publishing-flow illustration and editable content/code ownership comparison
 - [How it works](https://nextstory.marcopontili.com/how-it-works): content model, draft preview, publish webhook, and cache tags, step by step
 - [Blocks](https://nextstory.marcopontili.com/blocks): every Storyblok block on the site, labelled with its component name
 - [Pricing](https://nextstory.marcopontili.com/pricing): demo pricing page from the same block contract
 - [German home](https://nextstory.marcopontili.com/de): German routes served from Storyblok field-level translations
 - [Privacy](https://nextstory.marcopontili.com/privacy): cookieless self-hosted Matomo, Vercel hosting
-- [For agents](https://nextstory.marcopontili.com/for-agents): how agents read the site, discovery files, and what has no API
+- [For agents](https://nextstory.marcopontili.com/for-agents): copyable reading workflows, resource inventory, and read-only browser tools
 
-## Docs
+## Reading resources
 
-- [Architecture](https://github.com/marcop135/next-storyblok/blob/main/docs/architecture.md): request path, preview, webhook revalidation
-- [Storyblok schema](https://github.com/marcop135/next-storyblok/blob/main/docs/storyblok-schema.md): content model as code, seed stories, languages
-- [Commands](https://github.com/marcop135/next-storyblok/blob/main/docs/commands.md): local setup, tests, preview and webhook URLs
+- [Home Markdown](https://nextstory.marcopontili.com/content/index.md): published content with canonical URL and source
+- [German home Markdown](https://nextstory.marcopontili.com/content/de/index.md): read German content directly
+- [Block metadata](https://nextstory.marcopontili.com/content/blocks.json): page blocks, translatable fields, and schema/component source paths
+- [Portal Markdown](https://nextstory.marcopontili.com/content/for-agents.md): reading and inspection workflows
+- [OpenAPI](https://nextstory.marcopontili.com/openapi.json): public HTTP resources
+- [API catalog](https://nextstory.marcopontili.com/.well-known/api-catalog): resource discovery linkset
+- [Skills index](https://nextstory.marcopontili.com/.well-known/agent-skills/index.json): concrete reading workflows
+- [Access](https://nextstory.marcopontili.com/auth.md): public read access; authenticated CMS operations are separate
+- [Architecture](https://github.com/marcop135/next-storyblok/blob/main/docs/architecture.md): content delivery and resource design
+- [Development cycle](https://github.com/marcop135/next-storyblok/blob/main/docs/development-cycle.md): setup, checks, versions, annotated tags, deployment, and CMS publication
+
+Use /content/{slug}.md for a published page, including /content/de/{slug}.md for German. HTML and Markdown have separate URLs. Native WebMCP is feature-detected; HTTP resources work without browser support. Public Markdown always returns published content, including when editor preview cookies are present.

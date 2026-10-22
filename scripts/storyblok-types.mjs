@@ -22,6 +22,8 @@ function fieldType(field) {
       return "string";
     case "boolean":
       return "boolean";
+    case "table":
+      return "{ fieldtype: 'table'; thead: { _uid: string; value: string }[]; tbody: { _uid: string; body: { _uid: string; value: string }[] }[] }";
     case "richtext":
       return "StoryblokRichTextInput";
     case "asset":

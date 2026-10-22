@@ -31,7 +31,9 @@
           "cta_band",
           "image_text",
           "accordion",
-          "pull_quote"
+          "pull_quote",
+          "comparison_table",
+          "code_example"
         ],
         "pos": 3
       }
@@ -90,6 +92,36 @@
         "type": "text",
         "translatable": true,
         "pos": 8
+      },
+      "animated_visual": {
+        "type": "boolean",
+        "description": "Illustrate the publishing path instead of the image",
+        "pos": 9
+      },
+      "visual_model_label": {
+        "type": "text",
+        "translatable": true,
+        "pos": 10
+      },
+      "visual_preview_label": {
+        "type": "text",
+        "translatable": true,
+        "pos": 11
+      },
+      "visual_publish_label": {
+        "type": "text",
+        "translatable": true,
+        "pos": 12
+      },
+      "visual_serve_label": {
+        "type": "text",
+        "translatable": true,
+        "pos": 13
+      },
+      "visual_caption": {
+        "type": "text",
+        "translatable": true,
+        "pos": 14
       }
     }
   },
@@ -380,6 +412,74 @@
         "type": "text",
         "translatable": true,
         "pos": 1
+      }
+    }
+  },
+  {
+    "name": "comparison_table",
+    "display_name": "Comparison table",
+    "is_root": false,
+    "is_nestable": true,
+    "schema": {
+      "headline": {
+        "type": "text",
+        "translatable": true,
+        "pos": 0,
+        "required": true
+      },
+      "intro": {
+        "type": "textarea",
+        "translatable": true,
+        "pos": 1
+      },
+      "caption": {
+        "type": "text",
+        "translatable": true,
+        "pos": 2
+      },
+      "table": {
+        "type": "table",
+        "translatable": true,
+        "pos": 3
+      }
+    }
+  },
+  {
+    "name": "code_example",
+    "display_name": "Code example",
+    "is_root": false,
+    "is_nestable": true,
+    "schema": {
+      "headline": {
+        "type": "text",
+        "translatable": true,
+        "pos": 0,
+        "required": true
+      },
+      "explanation": {
+        "type": "textarea",
+        "translatable": true,
+        "pos": 1
+      },
+      "caption": {
+        "type": "text",
+        "translatable": true,
+        "pos": 2
+      },
+      "code": {
+        "type": "textarea",
+        "translatable": false,
+        "pos": 3
+      },
+      "language": {
+        "type": "text",
+        "translatable": false,
+        "pos": 4
+      },
+      "source_path": {
+        "type": "text",
+        "translatable": false,
+        "pos": 5
       }
     }
   }

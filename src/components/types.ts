@@ -1,4 +1,6 @@
 export type {
+  ComparisonTableBlok,
+  CodeExampleBlok,
   AccordionBlok,
   AccordionItemBlok,
   ConfigBlok,

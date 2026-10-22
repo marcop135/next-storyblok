@@ -30,3 +30,13 @@ it("falls back to the seed stories when Storyblok is unavailable or no token is 
   vi.stubEnv("STORYBLOK_DELIVERY_API_TOKEN", "");
   expect(await publishedPageSlugs()).toEqual(mockPageSlugs);
 });
+
+it("keeps the published page list empty when every CMS page is unpublished", async () => {
+  vi.stubGlobal("fetch", vi.fn().mockResolvedValue(Response.json({
+    links: {
+      config: { slug: "config", is_folder: false, published: true },
+      home: { slug: "home", is_folder: false, published: false },
+    },
+  })));
+  expect(await publishedPageSlugs()).toEqual([]);
+});

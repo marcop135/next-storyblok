@@ -1,9 +1,9 @@
 # Architecture
 
-Next Story is a demo B2B marketing site. The **repo and host** advertise the stack (`next-storyblok`); Storyblok owns page content.
+Next Story is a headless CMS demo built with Next.js and Storyblok. Storyblok owns page content; React Server Components define how blocks render.
 
 ```mermaid
-flowchart LR
+flowchart TB
   model["storyblok/components.json<br/>storyblok/stories/"] -- "npm run storyblok:push" --> space[(Storyblok space)]
   model -- "npm run storyblok:types" --> types["src/types/storyblok.generated.ts"]
   editor[Visual Editor] -- "/api/preview" --> draft["Next.js draft mode<br/>uncached drafts"]
@@ -18,11 +18,19 @@ flowchart LR
 1. [`src/proxy.ts`](../src/proxy.ts) sets an `x-site-locale` request header from the first path segment. The root layout reads it for `<html lang>`, the German navigation, and JSON-LD.
 2. [`src/app/[[...slug]]/page.tsx`](../src/app/[[...slug]]/page.tsx) parses locale and slug (`/`, `/pricing`, `/de`, `/de/pricing`). The `config` story returns 404 as a page.
 3. [`src/lib/fetch-story.ts`](../src/lib/fetch-story.ts) loads from the CDN when a token is configured; otherwise the seed stories in `storyblok/stories/` render, translated by [`src/lib/localize.ts`](../src/lib/localize.ts) the same way the CDN resolves `language=de`. Production always requests published content unless draft mode is enabled. Drafts bypass the cache; published fetches share collection and per-story tags across languages, with a 60-second fallback expiry. Missing stories return 404; upstream failures surface as errors, not missing pages.
-4. [`src/components/StoryRenderer.tsx`](../src/components/StoryRenderer.tsx) registers blocks on the server. Public stories render through `StoryblokServerComponent`, bypassing the SDK's process-wide editor cache. Authenticated preview uses `StoryblokStory`, which mounts the Visual Editor bridge once. The delivery token stays on the server.
+4. [`src/components/StoryRenderer.tsx`](../src/components/StoryRenderer.tsx) registers blocks on the server. Public stories render through `StoryblokServerComponent`, bypassing the SDK's process-wide editor cache. Authenticated preview uses `StoryblokStory`, which mounts the Visual Editor bridge once. The delivery token stays on the server. The hero's publishing illustration is server-rendered HTML/SVG with a one-shot CSS animation; reduced motion uses its static final state, without a client animation library.
 5. [`src/lib/site-config.ts`](../src/lib/site-config.ts) loads the `config` story for the header and footer; the layout falls back to built-in English links when it is missing.
 6. [`src/app/api/preview/route.ts`](../src/app/api/preview/route.ts) authenticates, validates the slug and locale, verifies draft content, then enables the cookie. Exit-preview redirects stay on the request origin.
 7. [`src/app/api/revalidate/route.ts`](../src/app/api/revalidate/route.ts) accepts publish, unpublish, delete, and move events. Story tags expire immediately in all languages and the sitemap refreshes; move events also expire the old slug; a `config` publish also refreshes the shared layout. Legacy ID-only payloads and moves without an old slug expire the collection and root layout. Invalid JSON or story paths return 400 without cache changes; unrelated actions receive a JSON acknowledgement without invalidation.
-8. [`src/app/sitemap.ts`](../src/app/sitemap.ts) lists published page stories from the Storyblok Links API in both languages, cached under the collection tag.
+8. [`src/app/sitemap.ts`](../src/app/sitemap.ts) lists published page stories from the Storyblok Links API in both languages, cached under the collection tag. [`src/app/content/[...slug]/route.ts`](../src/app/content/[...slug]/route.ts) serializes localized page blocks into Markdown, explicitly requesting published delivery. The underlying story fetch uses those same invalidation tags; resource responses are `no-store`, so a second response cache cannot outlive publication invalidation.
+
+## Public reading resources
+
+`/content/index.md` and `/content/de/index.md` represent home; `/content/blocks.md`, `/content/de/blocks.md`, and corresponding story paths return Markdown. Explicit URLs avoid negotiating HTML/RSC and Markdown at the same address. Unknown/private paths return 404; upstream delivery failures return 503. Preview cookies do not change these published representations. HTML metadata advertises Markdown alternates.
+
+[`src/lib/agent-resources.ts`](../src/lib/agent-resources.ts) owns the resource inventory, portal workflows, API catalog, OpenAPI description, and skills index. `/content/blocks.json` derives page-block metadata from the schema, including translation flags and source paths. It does not ship the React registry to browsers. `/auth.md` describes public access and the separate authenticated CMS operations.
+
+[`AgentTools`](../src/components/AgentTools.tsx) mounts once and feature-detects native WebMCP. [`agent-tools.ts`](../src/lib/agent-tools.ts) wraps the same HTTP resources with `get_page_markdown` and `list_blocks`, caps response bytes, forwards cancellation, and aborts registration on unmount. The current pathname is resolved at execution rather than captured before client navigation. Browsers without the API use the public resources directly. Native support and stubbed lifecycle verification are distinct checks.
 
 ## Env
 
@@ -34,8 +42,6 @@ flowchart LR
 | `STORYBLOK_PREVIEW_SECRET` | Gates `/api/preview` |
 | `STORYBLOK_REVALIDATE_SECRET` | Gates `/api/revalidate` |
 | `STORYBLOK_PERSONAL_ACCESS_TOKEN`, `STORYBLOK_SPACE_ID` | `npm run storyblok:push` only; never read by the app |
-
-## Hosting
 
 Production: Vercel + custom domain `https://nextstory.marcopontili.com`. DNS CNAME via Cloudflare. Not a static FTP deploy.
 

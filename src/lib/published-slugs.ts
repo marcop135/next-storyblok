@@ -24,7 +24,7 @@ export async function publishedPageSlugs(): Promise<string[]> {
       .filter((link) => !link.is_folder && link.published)
       .map((link) => normalizeStorySlug(link.slug))
       .filter((slug): slug is string => slug !== null && isPageSlug(slug));
-    return slugs.length ? slugs : mockPageSlugs;
+    return slugs;
   } catch {
     // Fetch errors can contain the request URL, including its delivery token.
     return mockPageSlugs;

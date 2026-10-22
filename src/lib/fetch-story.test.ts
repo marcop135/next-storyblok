@@ -19,6 +19,15 @@ beforeEach(() => {
 });
 
 describe("content delivery", () => {
+  it("can explicitly read published content despite preview cookies and draft development settings", async () => {
+    vi.stubEnv("NODE_ENV", "development");
+    draftMode.mockResolvedValue({ isEnabled: true });
+    await fetchStory("home", "de", { version: "published" });
+    const [url, options] = vi.mocked(fetch).mock.calls[0];
+    expect(new URL(String(url)).searchParams.get("version")).toBe("published");
+    expect(options).toMatchObject({ cache: "force-cache", next: { tags: expect.arrayContaining(["storyblok"]) } });
+    expect(draftMode).not.toHaveBeenCalled();
+  });
   it("never serves drafts to public production requests, even with a draft env setting", async () => {
     await fetchStory("home");
     const [url, options] = vi.mocked(fetch).mock.calls[0];

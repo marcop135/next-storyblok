@@ -9,6 +9,7 @@ import { fetchStory } from "@/lib/fetch-story";
 import { hreflangAlternates, storyblokLanguage } from "@/lib/i18n";
 import { OG_IMAGE, SITE_NAME } from "@/lib/site";
 import { isPageSlug, parseStorySegments } from "@/lib/story-path";
+import { markdownPathForPage } from "@/lib/agent-paths";
 
 type PageProps = {
   params: Promise<{ slug?: string[] }>;
@@ -39,6 +40,7 @@ export async function generateMetadata({
     alternates: {
       canonical,
       languages: hreflangAlternates(slug),
+      types: { "text/markdown": markdownPathForPage(canonical) || "/content/index.md" },
     },
     openGraph: {
       type: "website",

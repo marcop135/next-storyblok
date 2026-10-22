@@ -7,6 +7,8 @@
 
 ## [Unreleased]
 
+## [0.8.2] - 2026-10-22
+
 ### Changed
 
 - Rename the repository to `nextstory` and point every repository link at it.

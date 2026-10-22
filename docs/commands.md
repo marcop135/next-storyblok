@@ -15,7 +15,10 @@ npm run verify:agent-readiness  # public Markdown/JSON, catalogs, parity, access
 
 ## Storyblok
 
-Push the content model and seed stories, and regenerate types, as described in [storyblok-schema.md](storyblok-schema.md):
+1. Create your own Storyblok space. Enable German (`de`) under Settings > Internationalization.
+2. Copy the space's preview token from Settings > Access Tokens into `STORYBLOK_DELIVERY_API_TOKEN` in `.env`. Set `STORYBLOK_REGION` to match the space (`eu` by default).
+3. For the import, set `STORYBLOK_PERSONAL_ACCESS_TOKEN` from My account > Personal access tokens and `STORYBLOK_SPACE_ID` from the space settings. These credentials are only read by the import script.
+4. Run the dry run below, then import. The import creates or replaces components by name and stories by slug, and publishes them. Use `npm run storyblok:push -- --draft` to save drafts instead.
 
 ```bash
 npm run storyblok:push -- --dry-run
@@ -23,6 +26,10 @@ npm run storyblok:push
 npm run storyblok:types        # after editing storyblok/components.json
 npm run storyblok:types:check  # CI: fails when the generated types are stale
 ```
+
+Set `STORYBLOK_PREVIEW_SECRET` and `STORYBLOK_REVALIDATE_SECRET` to separate random values in `.env` and your deployment environment. Restart the app after changing environment variables. No separate public delivery token is used; the preview token stays on the server and production requests published content.
+
+For the Visual Editor, use a reachable HTTPS app URL as the default environment, set the home story's real path to `/`, and open the preview entry below with that origin. Local HTTPS: `npm run dev -- --experimental-https` at `https://localhost:3000`; trust the local certificate before opening it in the editor. Block definitions, locale fields, and editor configuration are in [storyblok-schema.md](storyblok-schema.md).
 
 Preview (draftMode):
 

@@ -5,10 +5,10 @@
   "content": {
     "_uid": "home-page",
     "component": "page",
-    "seo_title": "Next Story: one content model for every market",
-    "seo_title__i18n__de": "Next Story: ein Content-Modell für jeden Markt",
-    "seo_description": "A Next.js App Router site whose pages are Storyblok blocks: draft preview, publish webhooks, and English and German routes.",
-    "seo_description__i18n__de": "Eine Next.js-App-Router-Site aus Storyblok-Blöcken: Entwurfsvorschau, Publish-Webhooks sowie englische und deutsche Routen.",
+    "seo_title": "Next Story: Next.js and Storyblok headless CMS demo",
+    "seo_title__i18n__de": "Next Story: Headless-CMS-Demo mit Next.js und Storyblok",
+    "seo_description": "Explore Storyblok blocks in Next.js App Router: server rendering, draft preview, publish webhooks, localized caching, and read-only content access.",
+    "seo_description__i18n__de": "Storyblok-Blöcke im Next.js App Router: Server-Rendering, Entwurfsvorschau, Publish-Webhooks, lokalisierter Cache und lesender Zugriff auf Inhalte.",
     "body": [
       {
         "_uid": "home-hero",
@@ -17,8 +17,8 @@
         "eyebrow__i18n__de": "Next.js + Storyblok Demo",
         "headline": "Ship every market from one content model",
         "headline__i18n__de": "Jeden Markt aus einem Content-Modell bedienen",
-        "subheadline": "Next Story is a demo marketing site. Every section on this page is a Storyblok block that editors change without a deploy.",
-        "subheadline__i18n__de": "Next Story ist eine Demo-Marketing-Site. Jeder Abschnitt dieser Seite ist ein Storyblok-Block, den die Redaktion ohne Deployment ändert.",
+        "subheadline": "Next Story is a headless CMS demo. Every section on this page is a Storyblok block that editors change without a deploy.",
+        "subheadline__i18n__de": "Next Story ist eine Headless-CMS-Demo. Jeder Abschnitt dieser Seite ist ein Storyblok-Block, den die Redaktion ohne Deployment ändert.",
         "cta_label": "How it works",
         "cta_label__i18n__de": "So funktioniert es",
         "cta_href": "/how-it-works",

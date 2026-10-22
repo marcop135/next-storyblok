@@ -1,6 +1,6 @@
 # Architecture
 
-Next Story is a demo B2B marketing site. The **repo and host** advertise the stack (`next-storyblok`); Storyblok owns page content.
+Next Story is a headless CMS demo built with Next.js and Storyblok. Storyblok owns page content; React Server Components define how blocks render.
 
 ```mermaid
 flowchart TB

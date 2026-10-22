@@ -1,6 +1,6 @@
 # Next Story
 
-> Public learning project built with Next.js App Router and Storyblok. Working examples connect content modelling, server rendering, draft preview, cache invalidation, and read-only agent access to their source.
+> Headless CMS demo and public learning project built with Next.js App Router and Storyblok. Working examples connect content modelling, server rendering, draft preview, cache invalidation, and read-only agent access to their source.
 
 - Site: https://nextstory.marcopontili.com/
 - Source: https://github.com/marcop135/next-storyblok (MIT)

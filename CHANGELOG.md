@@ -7,6 +7,8 @@
 
 ## [Unreleased]
 
+## [0.8.0] - 2026-10-22
+
 ### Added
 
 - Add localized comparison-table and source-linked code-example blocks.

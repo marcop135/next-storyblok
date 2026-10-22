@@ -37,6 +37,8 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  // next dev would otherwise write AGENTS.md into the repo root.
+  agentRules: false,
   images: {
     remotePatterns: [
       {

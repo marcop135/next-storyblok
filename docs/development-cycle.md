@@ -31,7 +31,7 @@ Check listeners before binding: macOS `lsof -iTCP:3502 -sTCP:LISTEN`; Windows `G
 3. Open the production promotion PR into `main`. Require its checks and inspect the release diff against each intended addition/removal before merging. Vercel deploys the production branch; verify the deployed commit and live routes rather than treating a merged PR as deployment proof.
 4. Fast-forward `develop` to the production commit, without a back-merge commit. Verify `main`, `develop`, and their remote refs resolve to the same commit.
 5. Tag the verified production commit, not the feature or pre-promotion release commit. Use an annotated `vx.y.z` tag, message `Release x.y.z`, matching the package/changelog version. Do not move an existing published tag.
-6. Publish that explicit tag and create the GitHub release named `x.y.z - YYYY-MM-DD`, with a one-line summary and concise change/verification bullets from the changelog. The tag identifies source; the GitHub release is the public record; the Vercel deployment is the running site. Verify all three point to the intended release.
+6. Publish that explicit tag and create the GitHub release named `[x.y.z] - YYYY-MM-DD` like its changelog heading, with a one-line summary and concise change/verification bullets from the changelog. The tag identifies source; the GitHub release is the public record; the Vercel deployment is the running site. Verify all three point to the intended release.
 7. Remove only the task's merged feature/release branches and task worktree after review artifacts and owned processes are handled.
 
 Tag commands, executed only as part of an authorized release:
@@ -40,10 +40,10 @@ Tag commands, executed only as part of an authorized release:
 git tag -a vx.y.z <verified-production-sha> -m "Release x.y.z"
 git show --no-patch vx.y.z
 git push origin vx.y.z
-gh release create vx.y.z --verify-tag --target main --title "x.y.z - YYYY-MM-DD" --notes-file <release-notes-file>
+gh release create vx.y.z --verify-tag --target main --title "[x.y.z] - YYYY-MM-DD" --notes-file <release-notes-file>
 ```
 
-The existing `v0.7.0` tag is annotated, points to the production promotion commit, and its GitHub release is named `0.7.0 - 2026-10-19`.
+The existing `v0.7.0` tag is annotated, points to the production promotion commit, and its GitHub release is named `[0.7.0] - 2026-10-19`.
 
 ## Coordinate Storyblok content
 

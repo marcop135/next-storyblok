@@ -1,6 +1,6 @@
 <p align="center">
-  <img src=".github/brand/readme-light.png#gh-light-mode-only" alt="Next Story: editors own the content, developers own the components" width="100%" />
-  <img src=".github/brand/readme-dark.png#gh-dark-mode-only" alt="Next Story: editors own the content, developers own the components" width="100%" />
+  <a href="https://nextstory.marcopontili.com"><img src=".github/brand/readme-light.png#gh-light-mode-only" alt="Next Story: editors own the content, developers own the components" width="100%" /></a>
+  <a href="https://nextstory.marcopontili.com"><img src=".github/brand/readme-dark.png#gh-dark-mode-only" alt="Next Story: editors own the content, developers own the components" width="100%" /></a>
 </p>
 
 # Next Story
